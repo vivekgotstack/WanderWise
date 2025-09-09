@@ -191,6 +191,7 @@ function Footer() {
           <p>Follow Us</p>
           <div className="flex gap-2">
             <button className="text-gray-400 hover:text-blue-600 cursor-pointer">
+            <a href="https://www.facebook.com/Goibibo">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -200,19 +201,23 @@ function Footer() {
               >
                 <path d="M3 7.007A4.007 4.007 0 0 1 7.007 3h41.986A4.007 4.007 0 0 1 53 7.007v41.986A4.007 4.007 0 0 1 48.993 53H7.007A4.007 4.007 0 0 1 3 48.993zM37.28 51V31.842h6.486l.971-7.466H37.28v-4.767c0-2.162.605-3.635 3.732-3.635L45 15.972V9.294C44.31 9.204 41.943 9 39.189 9c-5.75 0-9.686 3.48-9.686 9.87v5.506H23v7.466h6.503V51z" />
               </svg>
+              </a>
             </button>
             <button className="text-gray-400 hover:text-black cursor-pointer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="32"
-                viewBox="0 0 448 512"
-                fill="currentColor"
-              >
-                <path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm297.1 84L257.3 234.6L379.4 396h-95.6L209 298.1L123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5l78.2-89.5zm-37.8 251.6L153.4 142.9h-28.3l171.8 224.7h26.3z" />
-              </svg>
+              <a href="https://x.com/vivekgotstack">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="32"
+                  viewBox="0 0 448 512"
+                  fill="currentColor"
+                >
+                  <path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm297.1 84L257.3 234.6L379.4 396h-95.6L209 298.1L123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5l78.2-89.5zm-37.8 251.6L153.4 142.9h-28.3l171.8 224.7h26.3z" />
+                </svg>
+              </a>
             </button>
             <button className="text-gray-400 hover:text-red-600 cursor-pointer">
+            <a href="https://youtu.be/Q2gcTXmiJXQ?si=ySLKaJcPDGEfwABM">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="34"
@@ -222,6 +227,7 @@ function Footer() {
               >
                 <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104l.022.26l.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105l-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006l-.087-.004l-.171-.007l-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103l.003-.052l.008-.104l.022-.26l.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007l.172-.006l.086-.003l.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
               </svg>
+              </a>
             </button>
           </div>
         </div>
@@ -252,42 +258,42 @@ function Footer() {
             alt="Visa"
             height="40px"
             width="60px"
-              className="cursor-pointer"
+            className="cursor-pointer"
           />
           <img
             src="/svg/pmodes/amex.png"
             alt="Amex"
             height="2px"
             width="70px"
-              className="cursor-pointer"
+            className="cursor-pointer"
           />
           <img
             src="/svg/pmodes/eway.png"
             alt="Eway"
             height="10px"
             width="60px"
-              className="cursor-pointer"
+            className="cursor-pointer"
           />
           <img
             src="/svg/pmodes/paypal.png"
             alt="Paypal"
             height="60px"
             width="80px"
-              className="cursor-pointer"
+            className="cursor-pointer"
           />
           <img
             src="/svg/pmodes/stripe.png"
             alt="Stripe"
             height="8px"
             width="80px"
-              className="cursor-pointer"
+            className="cursor-pointer"
           />
           <img
             src="/svg/pmodes/unionpay.png"
             alt="Unionpay"
             height="20px"
             width="70px"
-              className="cursor-pointer"
+            className="cursor-pointer"
           />
         </div>
       </div>
