@@ -1,0 +1,32 @@
+.highlight li:hover{
+    cursor: pointer;
+}
+.highlight{
+    margin-top: 8px;
+}
+.highlight li{
+    color: rgb(125, 124, 124);
+    line-height: 3vh;
+}
+
+.movingbus {
+    animation: busmove 10s ease-in-out infinite;
+}
+
+@keyframes busmove {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(35vw);
+  }
+}
+
+.active-page{
+  border-bottom: 2px solid blue;
+  transition: 100ms ease;
+}
+
+.pages h1::first-letter{
+  color:rgb(89, 89, 200);
+}
