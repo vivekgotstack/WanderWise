@@ -1,4 +1,4 @@
-# Goibibo – Hotel Booking Platform 🏨
+# Goibibo – Hotel Booking Platform
 
 Goibibo is a modern hotel booking web application built with **React** and **Tailwind CSS**.  
 It provides a smooth way to search, compare, and book hotels easily while offering instant booking confirmation and a clean, modern interface.
@@ -37,7 +37,8 @@ cd goibibo
 npm install
 npm run dev
 ---
+```
 
-<footer className="text-center py-4 text-gray-400 text-sm bg-black">
+<footer className="flex justify-center text-center w-full text-gray-400 text-sm bg-black">
   Made with <span className="text-red-500">❤️</span> by <span className="text-[rgb(89,89,200)] font-medium">Vivek</span>
 </footer>
