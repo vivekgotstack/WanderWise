@@ -1,6 +1,13 @@
+import { ThemeContext } from "@/contexts/ThemeContext";
+import { useContext } from "react";
+
 export default function Holidays() {
+  const currentTheme = useContext(ThemeContext);
+  if (!currentTheme) return null;
   return (
-    <div className="flex flex-wrap bg-gradient-to-r from-white to-gray-200">
+    <div className={`flex flex-wrap ${
+      currentTheme.theme === "light" ? "bg-gradient-to-r from-white to-gray-200" : "bg-gradient-to-r from-gray-800 to-gray-700"
+    }`}>
       <div className="min-h-screen p-10 h-auto flex flex-1 w-1/2">
         <img
           src="/svg/pagessvg/holidaypage.svg"
@@ -9,10 +16,10 @@ export default function Holidays() {
         />
       </div>
       <div className="flex-1 w-full md:w-1/2 flex flex-col justify-center items-start p-10 pages">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+      <h1 className={`text-4xl md:text-5xl ${currentTheme.theme === "light" ?"text-gray-800":"text-gray-300"} font-bold mb-6 leading-tight`}>
           Unforgettable Holidays, Just a Click Away
         </h1>
-        <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+        <p className={`text-lg ${currentTheme.theme === "light" ?"text-gray-700":"text-gray-400"} mb-4 leading-relaxed`}>
           Turn your travel dreams into reality with our holidays section,
           designed to make planning your perfect getaway effortless and
           exciting. Whether you’re looking for a serene beach escape, an
@@ -22,7 +29,7 @@ export default function Holidays() {
           on what truly matters — enjoying the journey and creating
           unforgettable memories.
         </p>
-        <p className="text-lg text-gray-700 leading-relaxed">
+        <p className={`text-lg ${currentTheme.theme === "light" ?"text-gray-700":"text-gray-400"} mb-4 leading-relaxed`}>
           From solo adventures to family vacations, we bring you the best
           destinations and exclusive deals, all in one place. Easily compare
           options, customize your itinerary, and book with confidence, knowing
