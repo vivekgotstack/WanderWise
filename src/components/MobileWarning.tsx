@@ -24,7 +24,7 @@ export default function MobileWarning() {
 
         {/* Message */}
         <p className="text-gray-300 text-lg max-w-md mx-auto leading-relaxed">
-          This site is designed only for <span className="text-[rgb(89,89,200)] font-semibold">laptops</span> and <span className="text-[rgb(89,89,200)] font-semibold">desktops</span> users by master Vivek.
+          This site is designed only for <span className="text-[rgb(89,89,200)] font-semibold">laptop</span> and <span className="text-[rgb(89,89,200)] font-semibold">desktop</span> users by master Vivek.
           <br />
           Kindly visit using a larger screen if you can afford it.
         </p>
