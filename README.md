@@ -30,7 +30,7 @@ It provides a smooth way to search, compare, and book hotels easily while offeri
 
 Follow these steps to set up and run the project on your local machine:
 
-### 1. Clone the Repository
+### Clone and play the Boss
 ```bash
 git clone https://github.com/yourusername/goibibo.git
 cd goibibo
