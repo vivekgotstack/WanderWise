@@ -40,8 +40,9 @@ npm run dev
 ```
 
 <footer className="flex items-center justify-center w-full text-gray-400 text-sm bg-black py-2">
-  <p>
-    Made with <span className="text-red-500">❤️</span> by 
-    <span className="text-[rgb(89,89,200)] font-medium"> Vivek</span>
+  <p className="flex items-center">
+    Made with <span className="text-red-500 mx-1">❤️</span> by{" "}
+    <span className="ml-1 text-[rgb(89,89,200)] font-medium">Vivek</span>
   </p>
 </footer>
+
