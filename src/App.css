@@ -23,12 +23,12 @@
 }
 
 .active-page{
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid rgb(73, 102, 217);
   transition: 100ms ease;
 }
 
 .pages h1::first-letter{
-  color:rgb(89, 89, 200);
+  color:rgb(73, 102, 217);
 }
 
 body{
