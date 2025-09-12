@@ -5,7 +5,7 @@ export default function Booking() {
   const currentTheme = useContext(ThemeContext);
   if (!currentTheme) return null;
   return (
-    <div className={`flex flex-wrap ${
+    <div className={`flex flex-wrap min-w-screen ${
       currentTheme.theme === "light" ? "bg-gradient-to-r from-white to-gray-200" : "bg-gradient-to-r from-gray-800 to-gray-700"
     }`}>
       <div className="min-h-screen p-10 h-auto flex flex-1 w-1/2">

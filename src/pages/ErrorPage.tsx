@@ -1,6 +1,6 @@
 export default function ErrorPage() {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white relative overflow-hidden">
+      <div className="flex flex-col min-w-screen items-center justify-center min-h-screen bg-black text-white relative overflow-hidden">
         {/* Background Glow */}
         <div className="absolute inset-0">
           <div className="absolute w-[400px] h-[400px] bg-[rgb(89,89,200)] rounded-full blur-3xl opacity-20 top-[-100px] left-[-100px]" />
