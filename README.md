@@ -1,9 +1,18 @@
-# WanderWise – Hotel Booking and Trip helper Platform
+<p align="center">
+  <img src="assets/logo.png" alt="WanderWise" width="150" />
+</p>
+
+
+<h1 align="center">WanderWise</h1>
+<p align="center">
+  Hotel Booking and Trip Helper Platform
+</p>
+
 
 WanderWise is a modern hotel booking web application that helps you plan, organize, and enjoy vacations effortlessly.
 It provides a smooth way to search, compare, and book hotels easily while offering instant booking confirmation and a clean, modern interface.
 
-> ⚠️ Note: This project is currently **not fully responsive**, so it’s best viewed on desktop screens.
+>
 
 ---
 
