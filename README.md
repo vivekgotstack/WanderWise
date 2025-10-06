@@ -1,9 +1,18 @@
-# Goibibo – Hotel Booking Platform
+<p align="center">
+  <img src="assets/logo.png" alt="WanderWise" width="150" />
+</p>
 
-Goibibo is a modern hotel booking web application built with **React** and **Tailwind CSS**.  
+
+<h1 align="center">WanderWise</h1>
+<p align="center">
+  Hotel Booking and Trip Helper Platform
+</p>
+
+
+WanderWise is a modern hotel booking web application that helps you plan, organize, and enjoy vacations effortlessly.
 It provides a smooth way to search, compare, and book hotels easily while offering instant booking confirmation and a clean, modern interface.
 
-> ⚠️ Note: This project is currently **not fully responsive**, so it’s best viewed on desktop screens.
+>
 
 ---
 
@@ -15,14 +24,19 @@ It provides a smooth way to search, compare, and book hotels easily while offeri
 - **Tailwind Styling** – Clean and consistent design language.
 
 ---
+<div align="center">
+
 ## 🛠 Tech Stack
-| Technology   | Purpose |
-|--------------|---------|
-| **React.js** | Core framework for the frontend |
-| **Tailwind CSS** | Styling and layout |
-| **Vite** | Fast development environment |
-| **JavaScript (ES6+)** | Functionality and logic |
-| **SVG Assets** | Custom illustrations |
+
+| Technology        | Purpose                            |
+|------------------|------------------------------------|
+| **React.js**      | Core framework for the frontend    |
+| **Tailwind CSS**  | Styling and layout                 |
+| **Vite**          | Fast development environment       |
+| **TypeScript** | Functionality and Type safety      |
+| **SVG Assets**    | Custom illustrations               |
+
+</div>
 
 ---
 
@@ -30,18 +44,16 @@ It provides a smooth way to search, compare, and book hotels easily while offeri
 
 Follow these steps to set up and run the project on your local machine:
 
-### 1. Clone the Repository
+### Clone and play the Boss
 ```bash
-git clone https://github.com/yourusername/goibibo.git
-cd goibibo
+git clone https://github.com/yourusername/WanderWise.git
+cd WanderWise
 npm install
 npm run dev
 ---
 ```
 
-<footer className="flex items-center justify-center w-full text-gray-400 text-sm bg-black py-2">
-  <p>
-    Made with <span className="text-red-500">❤️</span> by 
-    <span className="text-[rgb(89,89,200)] font-medium"> Vivek</span>
-  </p>
-</footer>
+<p align="center">
+  Made with <span style="color: red;">❤️</span> by 
+  <span style="color: rgb(89,89,200); font-weight: 600;">Vivek</span>
+</p>
