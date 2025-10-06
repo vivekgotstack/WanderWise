@@ -4,22 +4,39 @@ import { useContext } from "react";
 export default function Booking() {
   const currentTheme = useContext(ThemeContext);
   if (!currentTheme) return null;
+
   return (
-    <div className={`flex flex-wrap min-w-screen ${
-      currentTheme.theme === "light" ? "bg-gradient-to-r from-white to-gray-200" : "bg-gradient-to-r from-gray-800 to-gray-700"
-    }`}>
-      <div className="min-h-screen p-10 h-auto flex flex-1 w-1/2">
+    <div
+      className={`flex flex-col md:flex-row min-h-screen w-full 
+        pt-[250px] sm:pt-[200px] md:pt-[100px] lg:pt-[100px] 
+        overflow-x-hidden ${
+          currentTheme.theme === "light"
+            ? "bg-gradient-to-r from-white to-gray-200"
+            : "bg-gradient-to-r from-gray-800 to-gray-700"
+        }`}
+    >
+      <div className="w-full md:w-1/2 flex justify-center items-center p-4 md:p-8">
         <img
           src="/svg/pagessvg/bookingpage.svg"
           alt="Manage Booking"
-          className="bg-cover"
+          className="w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-contain"
         />
       </div>
-      <div className="flex-1 w-full md:w-1/2 flex flex-col justify-center items-start p-10 pages">
-        <h1 className={`text-4xl md:text-5xl ${currentTheme.theme === "light" ?"text-gray-800":"text-gray-300"} font-bold mb-6 leading-tight`}>
-          Simplify Your Bookings
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-start p-4 md:p-8 lg:p-16 text-left">
+        <h1
+          className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-snug ${
+            currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"
+          }`}
+        >
+          <span className="inline-block mr-1 text-indigo-500">S</span>
+          implify Your Bookings
         </h1>
-        <p className={`text-lg ${currentTheme.theme === "light" ?"text-gray-700":"text-gray-400"} mb-4 leading-relaxed`}>
+
+        <p
+          className={`text-sm sm:text-base md:text-lg mb-4 leading-relaxed ${
+            currentTheme.theme === "light" ? "text-gray-700" : "text-gray-400"
+          }`}
+        >
           Planning ahead has never been easier. Our booking section is built to
           help you reserve services quickly and effortlessly, giving you a smooth,
           stress-free experience from start to finish. Whether you’re scheduling
@@ -28,7 +45,12 @@ export default function Booking() {
           just a few clicks, you can confirm your booking and get instant updates,
           so you’re always in the loop.
         </p>
-        <p className={`text-lg ${currentTheme.theme === "light" ?"text-gray-700":"text-gray-400"} mb-4 leading-relaxed`}>
+
+        <p
+          className={`text-sm sm:text-base md:text-lg leading-relaxed ${
+            currentTheme.theme === "light" ? "text-gray-700" : "text-gray-400"
+          }`}
+        >
           We value your time and flexibility. That’s why our system lets you
           easily modify or cancel bookings, putting you in control of your plans.
           With real-time availability and instant confirmation, you’ll never miss

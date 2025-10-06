@@ -18,145 +18,137 @@ import { ThemeContext } from "@/contexts/ThemeContext";
 function Navbar() {
   const currentTheme = useContext(ThemeContext);
   if (!currentTheme) return null;
+
   return (
-    <div
-      className={`min-w-full fixed min-h-22 max-h-24 flex flex-wrap ${currentTheme.theme === "light" ? "bg-gradient-to-r from-white to-gray-200" : "bg-gray-800"
-        } justify-around z-100`}
+    <nav
+      className={`fixed top-0 left-0 w-full flex flex-col md:flex-row items-center justify-between px-4 py-3 md:px-10 md:py-4 shadow-sm ${currentTheme.theme === "light"
+        ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
+        : "bg-gray-800 text-gray-200"
+        } z-50`}
     >
-      <div
-        className={`flex flex-wrap justify-around items-center w-2/3 font-bold -translate-y-5 ${currentTheme.theme === "light" ? "text-gray-500" : "text-gray-200"
-          }`}
-      >
-        {
-          currentTheme.theme === "light" ? <a href="/">
-            <span className="flex justify-center">
-              <img
-                src="/logo.png"
-                alt="WanderWise"
-                className="w-auto sm:w-24 md:w-28 lg:w-32 xl:w-36 h-auto ml-10 -translate-y-2"
+      <div className="flex items-center justify-between w-full md:w-auto mb-2 md:mb-0">
+        <a href="/" className="flex items-center space-x-2">
+          <img
+            src={currentTheme.theme === "light" ? "/logo.png" : "/logo1.png"}
+            alt="WanderWise"
+            className="h-10 sm:h-12 md:h-14 w-auto"
+          />
+        </a>
+        <button
+          id="theme"
+          className="ml-4 text-gray-400 hover:text-gray-600"
+          onClick={currentTheme.toggleTheme}
+        >
+          {currentTheme.theme === "light" ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#999798"
+                fillRule="evenodd"
+                d="M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1M2 12a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m17 0a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1m-6 8a1 1 0 1 0-2 0v1a1 1 0 1 0 2 0zm5.364-3.05a1 1 0 1 0-1.414 1.414l.707.707a1 1 0 0 0 1.414-1.414zM4.929 4.929a1 1 0 0 1 1.414 0l.707.707A1 1 0 0 1 5.636 7.05l-.707-.707a1 1 0 0 1 0-1.414M7.05 18.364a1 1 0 1 0-1.414-1.414l-.707.707a1 1 0 1 0 1.414 1.414zM19.071 4.929a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M7 12a5 5 0 1 1 10 0a5 5 0 0 1-10 0"
+                clipRule="evenodd"
               />
-            </span>
-          </a> : <a href="/">
-            <span className="flex justify-center">
-              <img
-                src="/logo1.png"
-                alt="WanderWise"
-                className="w-auto sm:w-24 md:w-28 lg:w-32 xl:w-36 h-auto ml-10 -translate-y-2"
-              />
-            </span>
-          </a>
-        }
-        <NavLink
-          to="/flights"
-          className={({ isActive }) => (isActive ? "active-page" : "")}
-        >
-          <div className="text-center flex flex-wrap flex-col">
-            <img src="/svg/plane.svg" alt="Flights" />
-            Flights
-          </div>
-        </NavLink>
-        <NavLink
-          to="/hotel"
-          className={({ isActive }) => (isActive ? "active-page" : "")}
-        >
-          <div className="text-center flex flex-wrap flex-col">
-            <img src="/svg/hotel.svg" alt="Hotels" />
-            Hotels
-          </div>
-        </NavLink>
-        <NavLink
-          to="/trains"
-          className={({ isActive }) => (isActive ? "active-page" : "")}
-        >
-          <div className="text-center flex flex-wrap flex-col">
-            <img src="/svg/train.svg" alt="Trains" />
-            Trains
-          </div>
-        </NavLink>
-        <NavLink
-          to="/cabs"
-          className={({ isActive }) => (isActive ? "active-page" : "")}
-        >
-          <div className="text-center flex flex-wrap flex-col">
-            <img src="/svg/cab.svg" alt="Cabs" />
-            Cabs
-          </div>
-        </NavLink>
-        <NavLink
-          to="/bus"
-          className={({ isActive }) => (isActive ? "active-page" : "")}
-        >
-          <div className="text-center flex flex-wrap flex-col">
-            <img src="/svg/bus.svg" alt="Bus" />
-            Bus
-          </div>
-        </NavLink>
-        <NavLink
-          to="/holidays"
-          className={({ isActive }) => (isActive ? "active-page" : "")}
-        >
-          <div className="text-center flex flex-wrap flex-col">
-            <img src="/svg/holiday.svg" alt="Holidays" />
-            Holidays
-          </div>
-        </NavLink>
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+            >
+              <path d="M12.058 20q-3.334 0-5.667-2.333T4.058 12q0-3.039 1.98-5.27t4.904-2.634q.081 0 .159.006t.153.017q-.506.706-.801 1.57T10.158 7.5q0 2.667 1.866 4.533t4.534 1.867q.951 0 1.813-.295t1.548-.801q.012.075.017.153t.006.159q-.384 2.923-2.615 4.903T12.057 20" />
+            </svg>
+          )}
+        </button>
       </div>
-      <div className="flex flex-wrap justify-evenly items-center w-1/3 -translate-y-5">
+      <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-evenly items-center gap-4 md:gap-6 w-full md:w-auto mb-3 md:mb-0">
+        {[
+          { to: "/flights", icon: "/svg/plane.svg", label: "Flights" },
+          { to: "/hotel", icon: "/svg/hotel.svg", label: "Hotels" },
+          { to: "/trains", icon: "/svg/train.svg", label: "Trains" },
+          { to: "/cabs", icon: "/svg/cab.svg", label: "Cabs" },
+          { to: "/bus", icon: "/svg/bus.svg", label: "Bus" },
+          { to: "/holidays", icon: "/svg/holiday.svg", label: "Holidays" },
+        ].map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            className="flex flex-col items-center text-center"
+          >
+            <img src={item.icon} alt={item.label} className="w-6 h-6 mb-1" />
+            {item.label}
+          </NavLink>
+        ))}
+      </div>
+      <div className="flex items-center justify-center gap-4 md:gap-6 mt-3 md:mt-0">
         <NavLink to="/booking">
           <HoverCard>
             <HoverCardTrigger>
-              <div className="text-center flex flex-wrap">
-                <img src="/svg/bookingbag.svg" alt="Booking" />
-                <div className="flex flex-wrap flex-col">
-                  <div
-                    className={`text-sm ${currentTheme.theme === "light"
-                      ? "text-gray-500"
-                      : "text-gray-200"
+              <div className="flex items-center text-center">
+                <img
+                  src="/svg/bookingbag.svg"
+                  alt="Booking"
+                  className="w-6 h-6 mr-1"
+                />
+                <div className="flex flex-col leading-tight">
+                  <span
+                    className={`text-xs ${currentTheme.theme === "light"
+                      ? "text-gray-600"
+                      : "text-gray-300"
                       }`}
                   >
                     Manage Booking
-                  </div>
-                  <p
-                    className={`${currentTheme.theme === "light"
-                      ? "text-gray-600"
-                      : "text-gray-300"
-                      } font-medium`}
+                  </span>
+                  <span
+                    className={`text-sm font-medium ${currentTheme.theme === "light"
+                      ? "text-gray-700"
+                      : "text-gray-200"
+                      }`}
                   >
                     My Trips
-                  </p>
+                  </span>
                 </div>
               </div>
             </HoverCardTrigger>
             <HoverCardContent>
-              <div className="bg-white mt-6 rounded-lg shadow-md shadow-gray-600 h-auto w-60 p-2 flex text-gray-400 text-sm flex-wrap text-center cursor-default">
-                🟢 Access your bookings, easy cancellation, date change and much
-                more
+              <div className="bg-white mt-3 rounded-lg shadow-md text-gray-600 text-sm p-3 text-center w-56">
+                🟢 Access your bookings, cancellations, and date changes.
               </div>
             </HoverCardContent>
           </HoverCard>
         </NavLink>
-
         <NavLink to="/auth">
           <HoverCard>
             <HoverCardTrigger>
-              <div className="flex text-blue-600 font-medium text-sm border-2 border-blue-600 rounded-lg p-1">
-                <img src="/svg/userpfp.svg" alt="User" />
-                <p className="p-2">Login/Signup</p>
+              <div className="flex items-center border-2 border-indigo-400 text-indigo-400 rounded-lg px-2 py-1 text-xs sm:text-sm font-medium">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-4 text-indigo-400 sm:w-5 sm:h-5 mr-1"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+                <span className="whitespace-nowrap">Login/Signup</span>
               </div>
             </HoverCardTrigger>
             <HoverCardContent>
-              <Card className="p-5 w-xs -translate-x-10 mt-5 rounded-lg shadow-md shadow-gray-600 cursor-default">
+              <Card className="p-5 w-64 mt-3 rounded-lg shadow-md shadow-gray-600 cursor-default">
                 <CardHeader>
                   <CardTitle>Hey Traveller</CardTitle>
                   <CardDescription>
-                    Get exclusive deals & Manage your trips
+                    Get exclusive deals & manage your trips
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap justify-center">
+                  <div className="flex justify-center">
                     <Button
-                      variant={"secondary"}
-                      className="cursor-pointer p-2 w-60"
+                      variant="secondary"
+                      className="cursor-pointer w-full p-2"
                       onClick={() => { }}
                     >
                       Login/Signup
@@ -167,35 +159,9 @@ function Navbar() {
             </HoverCardContent>
           </HoverCard>
         </NavLink>
-        <button
-          id="theme"
-          className="text-gray-400 hover:text-gray-600 cursor-pointer"
-          onClick={currentTheme.toggleTheme}
-        >
-          {currentTheme.theme === "light" ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1M2 12a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m17 0a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1m-6 8a1 1 0 1 0-2 0v1a1 1 0 1 0 2 0zm5.364-3.05a1 1 0 1 0-1.414 1.414l.707.707a1 1 0 0 0 1.414-1.414zM4.929 4.929a1 1 0 0 1 1.414 0l.707.707A1 1 0 0 1 5.636 7.05l-.707-.707a1 1 0 0 1 0-1.414M7.05 18.364a1 1 0 1 0-1.414-1.414l-.707.707a1 1 0 1 0 1.414 1.414zM19.071 4.929a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M7 12a5 5 0 1 1 10 0a5 5 0 0 1-10 0" />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12.058 20q-3.334 0-5.667-2.333T4.058 12q0-3.039 1.98-5.27t4.904-2.634q.081 0 .159.006t.153.017q-.506.706-.801 1.57T10.158 7.5q0 2.667 1.866 4.533t4.534 1.867q.951 0 1.813-.295t1.548-.801q.012.075.017.153t.006.159q-.384 2.923-2.615 4.903T12.057 20" />
-            </svg>
-          )}
-        </button>
       </div>
-    </div>
+    </nav>
   );
 }
+
 export default Navbar;

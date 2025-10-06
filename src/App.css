@@ -1,36 +1,47 @@
-.highlight li:hover{
-    cursor: pointer;
+.highlight li:hover {
+  cursor: pointer;
 }
-.highlight{
-    margin-top: 8px;
+
+.highlight {
+  margin-top: 8px;
 }
-.highlight li{
-    color: rgb(125, 124, 124);
-    line-height: 3vh;
+
+.highlight li {
+  color: rgb(125, 124, 124);
+  line-height: 3vh;
 }
 
 .movingbus {
-    animation: busmove 8s ease-in-out infinite;
+  animation: busmove 4s ease-in-out infinite;
 }
 
 @keyframes busmove {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
   }
+
   50% {
-    transform: translateX(20vw);
+    transform: translateX(10vw);
   }
 }
 
-.active-page{
+.active-page {
   border-bottom: 2px solid rgb(73, 102, 217);
   transition: 100ms ease;
 }
 
-.pages h1::first-letter{
-  color:rgb(73, 102, 217);
+.pages h1::first-letter {
+  color: rgb(73, 102, 217);
 }
 
-body{
-  background-color: rgb(238, 237, 237);
+body,
+html {
+  overflow-x: hidden;
+}
+
+li,
+button {
+  cursor: pointer;
 }
