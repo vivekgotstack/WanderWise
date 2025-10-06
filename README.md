@@ -1,6 +1,6 @@
-# Goibibo – Hotel Booking Platform
+# WanderWise – Hotel Booking and Trip helper Platform
 
-Goibibo is a modern hotel booking web application built with **React** and **Tailwind CSS**.  
+WanderWise is a modern hotel booking web application that helps you plan, organize, and enjoy vacations effortlessly.
 It provides a smooth way to search, compare, and book hotels easily while offering instant booking confirmation and a clean, modern interface.
 
 > ⚠️ Note: This project is currently **not fully responsive**, so it’s best viewed on desktop screens.
@@ -15,14 +15,19 @@ It provides a smooth way to search, compare, and book hotels easily while offeri
 - **Tailwind Styling** – Clean and consistent design language.
 
 ---
+<div align="center">
+
 ## 🛠 Tech Stack
-| Technology   | Purpose |
-|--------------|---------|
-| **React.js** | Core framework for the frontend |
-| **Tailwind CSS** | Styling and layout |
-| **Vite** | Fast development environment |
-| **JavaScript (ES6+)** | Functionality and logic |
-| **SVG Assets** | Custom illustrations |
+
+| Technology        | Purpose                            |
+|------------------|------------------------------------|
+| **React.js**      | Core framework for the frontend    |
+| **Tailwind CSS**  | Styling and layout                 |
+| **Vite**          | Fast development environment       |
+| **TypeScript** | Functionality and Type safety      |
+| **SVG Assets**    | Custom illustrations               |
+
+</div>
 
 ---
 
@@ -32,8 +37,8 @@ Follow these steps to set up and run the project on your local machine:
 
 ### Clone and play the Boss
 ```bash
-git clone https://github.com/yourusername/goibibo.git
-cd goibibo
+git clone https://github.com/yourusername/WanderWise.git
+cd WanderWise
 npm install
 npm run dev
 ---
