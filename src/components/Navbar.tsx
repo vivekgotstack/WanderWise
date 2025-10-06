@@ -20,24 +20,32 @@ function Navbar() {
   if (!currentTheme) return null;
   return (
     <div
-      className={`min-w-full fixed min-h-22 max-h-24 flex flex-wrap ${
-        currentTheme.theme === "light" ? "bg-gradient-to-r from-white to-gray-200" : "bg-gray-800"
-      } justify-around z-100`}
+      className={`min-w-full fixed min-h-22 max-h-24 flex flex-wrap ${currentTheme.theme === "light" ? "bg-gradient-to-r from-white to-gray-200" : "bg-gray-800"
+        } justify-around z-100`}
     >
       <div
-        className={`flex flex-wrap justify-around items-center w-2/3 font-bold -translate-y-5 ${
-          currentTheme.theme === "light" ? "text-gray-500" : "text-gray-200"
-        }`}
+        className={`flex flex-wrap justify-around items-center w-2/3 font-bold -translate-y-5 ${currentTheme.theme === "light" ? "text-gray-500" : "text-gray-200"
+          }`}
       >
-        <a href="/">
-          <span className="flex justify-center">
-            <img
-              src="/logo.webp"
-              alt="Goibibo"
-              className="w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 h-auto ml-16"
-            />
-          </span>
-        </a>
+        {
+          currentTheme.theme === "light" ? <a href="/">
+            <span className="flex justify-center">
+              <img
+                src="/logo.png"
+                alt="WanderWise"
+                className="w-auto sm:w-24 md:w-28 lg:w-32 xl:w-36 h-auto ml-10 -translate-y-2"
+              />
+            </span>
+          </a> : <a href="/">
+            <span className="flex justify-center">
+              <img
+                src="/logo1.png"
+                alt="WanderWise"
+                className="w-auto sm:w-24 md:w-28 lg:w-32 xl:w-36 h-auto ml-10 -translate-y-2"
+              />
+            </span>
+          </a>
+        }
         <NavLink
           to="/flights"
           className={({ isActive }) => (isActive ? "active-page" : "")}
@@ -101,20 +109,18 @@ function Navbar() {
                 <img src="/svg/bookingbag.svg" alt="Booking" />
                 <div className="flex flex-wrap flex-col">
                   <div
-                    className={`text-sm ${
-                      currentTheme.theme === "light"
-                        ? "text-gray-500"
-                        : "text-gray-200"
-                    }`}
+                    className={`text-sm ${currentTheme.theme === "light"
+                      ? "text-gray-500"
+                      : "text-gray-200"
+                      }`}
                   >
                     Manage Booking
                   </div>
                   <p
-                    className={`${
-                      currentTheme.theme === "light"
-                        ? "text-gray-600"
-                        : "text-gray-300"
-                    } font-medium`}
+                    className={`${currentTheme.theme === "light"
+                      ? "text-gray-600"
+                      : "text-gray-300"
+                      } font-medium`}
                   >
                     My Trips
                   </p>
@@ -151,7 +157,7 @@ function Navbar() {
                     <Button
                       variant={"secondary"}
                       className="cursor-pointer p-2 w-60"
-                      onClick={() => {}}
+                      onClick={() => { }}
                     >
                       Login/Signup
                     </Button>

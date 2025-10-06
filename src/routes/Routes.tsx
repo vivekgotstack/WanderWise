@@ -1,10 +1,4 @@
 import MainLayout from "@/layouts/MainLayout";
-import BusLoader from "@/loaders/BusLoader";
-import CabsLoader from "@/loaders/CabsLoader";
-import FlightLoader from "@/loaders/FlightLoader";
-import HolidaysLoader from "@/loaders/HolidaysLoader";
-import HotelLoader from "@/loaders/HotelLoader";
-import TrainsLoader from "@/loaders/TrainsLoader";
 import Booking from "@/pages/Booking";
 import Bus from "@/pages/Bus";
 import Cabs from "@/pages/Cabs";
@@ -21,38 +15,31 @@ const router= createBrowserRouter([
         children:[
             {
                 path:"/",
-                Component:Flight,
-                loader:FlightLoader
+                Component:Flight
             },
             {
                 path:"/flights",
-                Component:Flight,
-                loader:FlightLoader
+                Component:Flight
             },
             {
                 path:"/hotel",
-                Component:Hotel,
-                loader:HotelLoader
+                Component:Hotel
             },
             {
                 path:"/trains",
-                Component:Trains,
-                loader:TrainsLoader,
+                Component:Trains
             },
             {
                 path:"/cabs",
-                Component:Cabs,
-                loader:CabsLoader,
+                Component:Cabs
             },
             {
                 path:"/bus",
-                Component:Bus,
-                loader:BusLoader,
+                Component:Bus
             },
             {
                 path:"/holidays",
-                Component:Holidays,
-                loader:HolidaysLoader,
+                Component:Holidays
             },
             {
                 path:"/booking",

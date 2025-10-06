@@ -33,7 +33,7 @@ function Footer() {
                 <li>Go Stay</li>
                 <li>Gift Cards</li>
                 <li>Trip Money</li>
-                <li>Goibibo Advertising Solutions</li>
+                <li>WanderWise Advertising Solutions</li>
                 <li>Travel Insurance</li>
               </ul>
             </li>
@@ -51,7 +51,7 @@ function Footer() {
                 <li>Privacy</li>
                 <li>Careers</li>
                 <li>YouTube Channel</li>
-                <li>Technology@GoibiboF</li>
+                <li>Technology@WanderWise</li>
                 <li>Customer Support</li>
                 <li>Facebook Page</li>
                 <li>Twitter Handle</li>
@@ -205,7 +205,7 @@ function Footer() {
             <p>Follow Us</p>
             <div className="flex gap-2">
               <button className="text-gray-400 hover:text-blue-600 cursor-pointer">
-                <a href="https://www.facebook.com/Goibibo">
+                <a href="https://www.meta.ai/?utm_source=facebook_bookmarks&fbclid=IwY2xjawNQnp1leHRuA2FlbQIxMABicmlkETE0c084QTFJVVIyY0RXelZ6AR7mbGsbY_BdeNdyojnatrkKkQK3aMbfAbjx3P0jfqsf4Ot-XTRmZv3l-cxc9g_aem_ERuV26-LME7qoJtCTfWZxw">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -250,7 +250,7 @@ function Footer() {
               Book Tickets faster. Download our mobile Apps
             </div>
             <div className="flex flex-wrap">
-              <a href="https://play.google.com/store/apps/details?id=com.goibibo&hl=en_IN">
+              <a href="https://play.google.com/store/search?q=hotel%20apps&c=apps&hl=en">
                 <img
                   src="/gplaylogo.png"
                   alt="Download It From Google Play"
@@ -259,7 +259,7 @@ function Footer() {
                   className="cursor-pointer"
                 />
               </a>
-              <a href="https://apps.apple.com/in/app/goibibo-hotel-flight-train/id631927169">
+              <a href="https://www.apple.com/in/store?afid=p240%7Cgo~cmp-11116556120~adg-109516736059~ad-774710206797_kwd-12522920~dev-c~ext-~prd-~mca-~nt-search&cid=aos-in-kwgo-brand--">
                 <img
                   src="/appstorelogo.png"
                   alt="Download It From App Store"
@@ -342,7 +342,7 @@ function Footer() {
             </div>
           </div>
           <div className="text-sm text-gray-400 mb-8">
-            © 2025 Makemytrip (India) Private Limited. All rights reserved
+            © 2025 WanderWise (India) Private Limited. All rights reserved
           </div>
         </div>
       </div>

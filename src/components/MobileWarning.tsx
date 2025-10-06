@@ -26,13 +26,13 @@ export default function MobileWarning() {
         <p className="text-gray-300 text-lg max-w-md mx-auto leading-relaxed">
           This site is designed only for <span className="text-[rgb(89,89,200)] font-semibold">laptop</span> and <span className="text-[rgb(89,89,200)] font-semibold">desktop</span> users by master Vivek.
           <br />
-          Kindly visit using a larger screen if you can afford it.
+          Kindly visit using a larger screen.
         </p>
 
         {/* Footer Note */}
         <div className="mt-6">
           <span className="text-gray-500 text-sm">
-            Now Buzz off!!
+            Try luck next time!!
           </span>
         </div>
       </div>
