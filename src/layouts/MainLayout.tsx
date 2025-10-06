@@ -6,11 +6,9 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 function MainLayout() {
   return (
     <ThemeProvider>
-    <Navbar/>
-      <div className="pt-20">
+      <Navbar />
       <Outlet />
-      </div>
-    <Footer/>
+      <Footer />
     </ThemeProvider>
   );
 }
