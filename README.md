@@ -57,5 +57,3 @@ npm run dev
   Made with <span style="color: red;">❤️</span> by 
   <span style="color: rgb(89,89,200); font-weight: 600;">Vivek</span>
 </p>
-
-
