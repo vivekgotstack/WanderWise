@@ -115,7 +115,7 @@ function Navbar() {
               </div>
             </HoverCardTrigger>
             <HoverCardContent>
-              <div className="bg-white mt-3 rounded-lg shadow-md text-gray-600 text-sm p-3 text-center w-56">
+              <div className="bg-gray-200 mt-3 rounded-lg shadow-md text-gray-900 text-sm p-3 text-center w-56">
                 🟢 Access your bookings, cancellations, and date changes.
               </div>
             </HoverCardContent>
@@ -137,10 +137,10 @@ function Navbar() {
               </div>
             </HoverCardTrigger>
             <HoverCardContent>
-              <Card className="p-5 w-64 mt-3 rounded-lg shadow-md shadow-gray-600 cursor-default">
+              <Card className="p-5 bg-gray-200 w-64 mt-3 rounded-lg shadow-md shadow-gray-600 cursor-default">
                 <CardHeader>
                   <CardTitle>Hey Traveller</CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-black">
                     Get exclusive deals & manage your trips
                   </CardDescription>
                 </CardHeader>
