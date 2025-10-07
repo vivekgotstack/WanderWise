@@ -3,7 +3,7 @@ import {
   HoverCardTrigger,
   HoverCardContent,
 } from "@radix-ui/react-hover-card";
-import { NavLink } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -18,6 +18,7 @@ import { ThemeContext } from "@/contexts/ThemeContext";
 function Navbar() {
   const currentTheme = useContext(ThemeContext);
   if (!currentTheme) return null;
+  const location = useLocation();
 
   return (
     <nav
@@ -26,17 +27,22 @@ function Navbar() {
         : "bg-gray-800 text-gray-200"
         } z-50`}
     >
-      <div className="flex items-center justify-between w-full md:w-auto mb-2 md:mb-0">
-        <a href="/" className="flex items-center space-x-2">
+      <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto mb-2 md:mb-0">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `flex items-center space-x-2 relative ${isActive ? "active" : ""}`
+          }
+        >
           <img
             src={currentTheme.theme === "light" ? "/logo.png" : "/logo1.png"}
             alt="WanderWise"
             className="h-10 sm:h-12 md:h-14 w-auto"
           />
-        </a>
+        </NavLink>
         <button
           id="theme"
-          className="ml-4 text-gray-400 hover:text-gray-600"
+          className="ml-4 sm:mr-4 text-gray-400 hover:text-gray-600"
           onClick={currentTheme.toggleTheme}
         >
           {currentTheme.theme === "light" ? (
@@ -77,7 +83,10 @@ function Navbar() {
           <NavLink
             key={item.to}
             to={item.to}
-            className="flex flex-col items-center text-center"
+            className={({ isActive }) =>
+              `nav-item flex flex-col items-center text-center ${isActive || (item.to === "/flights" && location.pathname === "/") ? "active" : ""
+              }`
+            }
           >
             <img src={item.icon} alt={item.label} className="w-6 h-6 mb-1" />
             {item.label}
@@ -85,7 +94,12 @@ function Navbar() {
         ))}
       </div>
       <div className="flex items-center justify-center gap-4 md:gap-6 mt-3 md:mt-0">
-        <NavLink to="/booking">
+        <NavLink
+          to="/booking"
+          className={({ isActive }) =>
+            `flex items-center text-center flex-shrink-0 sm:ml-12 ${isActive ? "border-2 p-2 border-indigo-500 rounded-md" : ""}`
+          }
+        >
           <HoverCard>
             <HoverCardTrigger>
               <div className="flex items-center text-center">
@@ -124,16 +138,16 @@ function Navbar() {
         <NavLink to="/auth">
           <HoverCard>
             <HoverCardTrigger>
-              <div className="flex items-center border-2 border-indigo-400 text-indigo-400 rounded-lg px-2 py-1 text-xs sm:text-sm font-medium">
+              <div className="flex items-center border-2 border-indigo-400 text-indigo-400 rounded-lg px-2 py-1 text-xs font-medium">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 text-indigo-400 sm:w-5 sm:h-5 mr-1"
+                  className="w-4 h-4 text-indigo-400 mr-1 sm:translate-0.5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                 </svg>
-                <span className="whitespace-nowrap">Login/Signup</span>
+                <span className="whitespace-nowrap sm:block md:hidden lg:block">Login/Signup</span>
               </div>
             </HoverCardTrigger>
             <HoverCardContent>
@@ -147,8 +161,7 @@ function Navbar() {
                 <CardContent>
                   <div className="flex justify-center">
                     <Button
-                      variant="secondary"
-                      className="cursor-pointer w-full p-2"
+                      className="cursor-pointer bg-indigo-500 text-white w-full p-2"
                       onClick={() => { }}
                     >
                       Login/Signup

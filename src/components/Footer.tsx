@@ -214,17 +214,50 @@ function Footer() {
               </a>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col flex-wrap justify-start gap-4">
+          <div className={`w-full mb-2 text-center font-bold ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"}`}>
+            Our Payment Gateways
+          </div>
+          <div className="overflow-hidden -translate-x-40 z-100">
+            <div className="flex scroll-strip">
+              {/* first set */}
+              <img src="/svg/pmodes/amex.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/eway.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/paypal.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/ebay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/stripe.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/unionpay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/apple-pay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/bitcoin.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/citi.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/moneygram.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/google-wallet.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/clickbank.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/ebay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/shopify.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/bluepay.png" className="h-16 w-auto mx-4" />
 
-          <div className="flex flex-wrap justify-start gap-4">
-            <img src="/svg/pmodes/visa.png" alt="Visa" className="h-20 w-16 cursor-pointer" />
-            <img src="/svg/pmodes/amex.png" alt="Amex" className="h-20 w-18 cursor-pointer" />
-            <img src="/svg/pmodes/eway.png" alt="Eway" className="h-20 w-16 cursor-pointer" />
-            <img src="/svg/pmodes/paypal.png" alt="Paypal" className="h-20 w-20 cursor-pointer" />
-            <img src="/svg/pmodes/stripe.png" alt="Stripe" className="h-20 w-20 cursor-pointer" />
-            <img src="/svg/pmodes/unionpay.png" alt="Unionpay" className="h-20 w-18 cursor-pointer" />
+              {/* duplicate set */}
+              <img src="/svg/pmodes/amex.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/eway.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/paypal.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/ebay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/stripe.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/unionpay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/apple-pay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/bitcoin.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/citi.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/moneygram.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/google-wallet.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/clickbank.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/ebay.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/shopify.png" className="h-16 w-auto mx-4" />
+              <img src="/svg/pmodes/bluepay.png" className="h-16 w-auto mx-4" />
+            </div>
           </div>
         </div>
-        <hr />
+        <hr className="mt-5" />
         <div className="mt-8 flex flex-col md:flex-row md:justify-between items-center gap-6">
           <div className="flex flex-wrap gap-8 justify-center md:justify-start items-center">
             <div>
@@ -244,11 +277,15 @@ function Footer() {
             </div>
             <div className="movingbus">
               <a href="https://www.redbus.in">
-                <img
+                {currentTheme.theme === "light" ? <img
+                  src="/svg/redbus-light.png"
+                  alt="RedBus"
+                  className="cursor-pointer h-8 w-13 sm:h-8 sm:w-13 md:h-8 md:w-13"
+                /> : <img
                   src="/svg/redbus.png"
                   alt="RedBus"
                   className="cursor-pointer h-16 w-18 sm:h-16 sm:w-18 md:h-16 md:w-18"
-                />
+                />}
               </a>
             </div>
           </div>

@@ -45,3 +45,49 @@ li,
 button {
   cursor: pointer;
 }
+
+.page-heading::first-letter {
+  color: rgb(93, 93, 231);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #d5d1d1;
+}
+
+.nav-item.active {
+  color: rgb(93, 93, 231);
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  translate: 0 2px;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(93, 93, 231);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-item.active::after {
+  transform: scaleX(1);
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+.scroll-strip {
+  display: flex;
+  width: max-content;     
+  animation: scroll 25s linear infinite;
+}

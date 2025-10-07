@@ -24,11 +24,10 @@ export default function Trains() {
 
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start p-8 md:p-16 text-left">
         <h1
-          className={`text-3xl md:text-5xl font-bold mb-6 leading-tight ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"
+          className={`page-heading text-3xl md:text-5xl font-bold mb-6 leading-tight ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"
             }`}
         >
-          <span className="inline-block mr-1 text-indigo-500">Y</span>
-          our Journey, On Track
+          Your Journey, On Track
         </h1>
 
         <p
