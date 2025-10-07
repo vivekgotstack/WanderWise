@@ -179,7 +179,7 @@ function Footer() {
           </div>
         </div>
         <hr className="hidden lg:block"></hr>
-        <div className="mt-2 mb-8 flex flex-col md:flex-row justify-between gap-6">
+        <div className="mt-5 mb-8 flex flex-col md:flex-row justify-between gap-6">
           <div className="flex flex-col gap-3 text-sm font-bold">
             <p className={`${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"}`}>Follow Us</p>
             <div className="flex gap-2 flex-wrap">
