@@ -12,10 +12,14 @@ import {
   CardContent,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import { useContext } from "react";
+import { useRef, useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 
 function Navbar() {
+  const sectionRef=useRef(null);
+  useEffect(()=>{
+    sectionRef.current.scrollIntoView({behavior:"smooth"});
+  },[]);
   const currentTheme = useContext(ThemeContext);
   if (!currentTheme) return null;
   const location = useLocation();
