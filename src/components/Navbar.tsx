@@ -12,7 +12,7 @@ import {
   CardContent,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import { useRef, useContext } from "react";
+import { useRef, useContext, useEffect } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 
 function Navbar() {
