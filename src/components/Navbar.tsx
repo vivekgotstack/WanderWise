@@ -12,21 +12,16 @@ import {
   CardContent,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import { useRef, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 
 function Navbar() {
-  const sectionRef=useRef(null);
-  useEffect(()=>{
-    sectionRef.current.scrollIntoView({behavior:"smooth"});
-  },[]);
   const currentTheme = useContext(ThemeContext);
   if (!currentTheme) return null;
   const location = useLocation();
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full flex flex-col md:flex-row items-center justify-between px-4 py-3 md:px-10 md:py-4 shadow-sm ${currentTheme.theme === "light"
+    <nav className={`fixed top-0 left-0 w-full flex flex-col md:flex-row items-center justify-between px-4 py-3 md:px-10 md:py-4 shadow-sm ${currentTheme.theme === "light"
         ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
         : "bg-gray-800 text-gray-200"
         } z-50`}
