@@ -1,9 +1,7 @@
-import { ThemeContext } from "@/contexts/ThemeContext";
-import { useContext } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 function Footer() {
-  const currentTheme = useContext(ThemeContext);
-  if (!currentTheme) return null;
+  const currentTheme = useTheme();
   return (
     <div
       className={`min-w-screen ${currentTheme.theme === "light"

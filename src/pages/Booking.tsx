@@ -1,10 +1,8 @@
-import { ThemeContext } from "@/contexts/ThemeContext";
-import { useContext } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Booking() {
-  const currentTheme = useContext(ThemeContext);
-  if (!currentTheme) return null;
-
+  const currentTheme = useTheme();
+  
   return (
     <div
       className={`flex flex-col md:flex-row min-h-screen w-full 

@@ -1,10 +1,10 @@
-import { createContext, useState, type ReactNode, useEffect } from "react";
+import { createContext, useState, type ReactNode, useEffect, useContext } from "react";
 
 interface Themes {
   theme: string;
   toggleTheme: () => void;
 }
-const ThemeContext = createContext<Themes | null>(null);
+const ThemeContext = createContext<Themes>({} as Themes);
 
 function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -23,4 +23,13 @@ function ThemeProvider({ children }: { children: ReactNode }) {
     </ThemeContext.Provider>
   );
 }
-export { ThemeContext, ThemeProvider };
+
+const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+};
+
+export { useTheme, ThemeProvider };

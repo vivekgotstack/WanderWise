@@ -1,9 +1,7 @@
-import { ThemeContext } from "@/contexts/ThemeContext";
-import { useContext } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Hotel() {
-  const currentTheme = useContext(ThemeContext);
-  if (!currentTheme) return null;
+  const currentTheme = useTheme();
 
   return (
     <div

@@ -12,19 +12,17 @@ import {
   CardContent,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import { useContext } from "react";
-import { ThemeContext } from "@/contexts/ThemeContext";
+import { useTheme } from "@/contexts/ThemeContext";
 
 function Navbar() {
-  const currentTheme = useContext(ThemeContext);
-  if (!currentTheme) return null;
+  const currentTheme = useTheme();
   const location = useLocation();
 
   return (
     <nav className={`fixed top-0 left-0 w-full flex flex-col md:flex-row items-center justify-between px-4 py-3 md:px-10 md:py-4 shadow-sm ${currentTheme.theme === "light"
-        ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
-        : "bg-gray-800 text-gray-200"
-        } z-50`}
+      ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
+      : "bg-gray-800 text-gray-200"
+      } z-50`}
     >
       <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto mb-2 md:mb-0">
         <NavLink
@@ -134,30 +132,34 @@ function Navbar() {
             </HoverCardContent>
           </HoverCard>
         </NavLink>
-        <NavLink to="/auth">
-          <HoverCard>
-            <HoverCardTrigger>
-              <div className="flex items-center border-2 border-indigo-400 text-indigo-400 rounded-lg px-2 py-1 text-xs font-medium">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 text-indigo-400 mr-1 sm:translate-0.5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
+
+        <HoverCard>
+          <HoverCardTrigger>
+            <div className="flex items-center border-2 border-indigo-400 text-indigo-400 rounded-lg px-2 py-1 text-xs font-medium">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 text-indigo-400 mr-1 sm:translate-0.5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              <NavLink to="login">
                 <span className="whitespace-nowrap sm:block md:hidden lg:block">Login/Signup</span>
-              </div>
-            </HoverCardTrigger>
-            <HoverCardContent>
-              <Card className="p-5 bg-gray-200 w-64 mt-3 rounded-lg shadow-md shadow-gray-600 cursor-default">
-                <CardHeader>
-                  <CardTitle>Hey Traveller</CardTitle>
-                  <CardDescription className="text-black">
-                    Get exclusive deals & manage your trips
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
+              </NavLink>
+            </div>
+          </HoverCardTrigger>
+          <HoverCardContent>
+            <Card className="p-5 bg-gray-200 w-64 mt-3 rounded-lg shadow-md shadow-gray-600 cursor-default">
+              <CardHeader>
+                <CardTitle>Hey Traveller</CardTitle>
+                <CardDescription className="text-black">
+                  Get exclusive deals & manage your trips
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent>
+                <NavLink to="/login">
                   <div className="flex justify-center">
                     <Button
                       className="cursor-pointer bg-indigo-500 text-white w-full p-2"
@@ -166,13 +168,13 @@ function Navbar() {
                       Login/Signup
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
-            </HoverCardContent>
-          </HoverCard>
-        </NavLink>
-      </div>
-    </nav>
+                </NavLink>
+              </CardContent>
+            </Card>
+          </HoverCardContent>
+        </HoverCard>
+      </div >
+    </nav >
   );
 }
 
