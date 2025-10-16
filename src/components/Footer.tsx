@@ -10,6 +10,7 @@ function Footer() {
         }`}
     >
       <div className="px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40">
+          <hr className="pt-5" />
         <div className="flex flex-wrap justify-evenly gap-10 pt-5 pb-5">
           <ul className={`flex-1 min-w-[200px] space-y-1 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-400"}`}>
             <h3 className={`font-bold mb-2 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"}`}>Our Products</h3>

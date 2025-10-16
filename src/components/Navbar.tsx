@@ -98,7 +98,7 @@ function Navbar() {
           }
         >
           <HoverCard>
-            <HoverCardTrigger>
+            <HoverCardTrigger asChild>
               <div className="flex items-center text-center">
                 <img
                   src="/svg/bookingbag.svg"
@@ -134,7 +134,7 @@ function Navbar() {
         </NavLink>
 
         <HoverCard>
-          <HoverCardTrigger>
+          <HoverCardTrigger asChild>
             <div className="flex items-center border-2 border-indigo-400 text-indigo-400 rounded-lg px-2 py-1 text-xs font-medium">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
