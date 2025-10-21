@@ -14,7 +14,7 @@ export default function SkeletonCard() {
                     : "bg-gradient-to-r from-gray-900 to-gray-700"
                 }
              ${skeletonColor}
-                h-38 w-5/6  
+                h-48 w-5/6  
                 sm:h-70 sm:w-full   
                 md:h-80 md:w-full  
                 lg:h-96 lg:w-full  
