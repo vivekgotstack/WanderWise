@@ -2,7 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Outlet, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+import SkeletonCard from "@/pages/SkeletonCard";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -17,7 +18,9 @@ function MainLayout() {
     <ThemeProvider>
       <ScrollToTop />
       <Navbar />
-      <Outlet />
+      <Suspense fallback={<SkeletonCard />}>
+        <Outlet />
+      </Suspense>
       <Footer />
     </ThemeProvider>
   );

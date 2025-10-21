@@ -9,49 +9,50 @@ import Hotel from "@/pages/Hotel";
 import Trains from "@/pages/Trains";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const router= createBrowserRouter([
+
+const router = createBrowserRouter([
     {
-        Component:MainLayout,
-        children:[
+        Component: MainLayout,
+        children: [
             {
-                path:"/",
-                Component:Flight
+                path: "/",
+                Component: Flight
             },
             {
-                path:"/flights",
-                Component:Flight
+                path: "/flights",
+                Component: Flight
             },
             {
-                path:"/hotel",
-                Component:Hotel
+                path: "/hotel",
+                Component: Hotel
             },
             {
-                path:"/trains",
-                Component:Trains
+                path: "/trains",
+                Component: Trains
             },
             {
-                path:"/cabs",
-                Component:Cabs
+                path: "/cabs",
+                Component: Cabs
             },
             {
-                path:"/bus",
-                Component:Bus
+                path: "/bus",
+                Component: Bus
             },
             {
-                path:"/holidays",
-                Component:Holidays
+                path: "/holidays",
+                Component: Holidays
             },
             {
-                path:"/booking",
-                Component:Booking,
+                path: "/booking",
+                Component: Booking,
             },
             {
-                path:"*",
-                Component:ErrorPage,
+                path: "*",
+                Component: ErrorPage,
             },
         ]
     }
 ]);
-export default function AppRouter(){
-    return <RouterProvider router={router}/>
+export default function AppRouter() {
+    return <RouterProvider router={router} />
 }
