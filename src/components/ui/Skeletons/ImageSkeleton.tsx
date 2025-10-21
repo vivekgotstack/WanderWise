@@ -12,7 +12,7 @@ export default function SkeletonCard() {
 
     return (
         <div
-            className={`flex flex-col md:flex-row min-h-screen justify-center items-center w-full pt-32 md:pt-20 ${bgGradient} gap-8 px-4`}
+            className={`flex flex-col md:flex-row justify-center items-center w-full pt-32 md:pt-20 ${bgGradient} gap-8 px-4`}
         >
             <Skeleton
                 className={`${skeletonColor}
