@@ -1,20 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
-interface BeforeInstallPromptEvent extends Event {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
-}
-
 const PWAInstallPrompt = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showPrompt, setShowPrompt] = useState(false);
 
   useEffect(() => {
-    const handler = (e: Event) => {
+    const handler = (e: any) => {
       e.preventDefault();
       if (window.matchMedia("(display-mode: standalone)").matches) return;
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
+      setDeferredPrompt(e);
       setShowPrompt(true);
     };
 
