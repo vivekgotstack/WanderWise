@@ -37,12 +37,12 @@ const PWAInstallPrompt = () => {
   if (!showPrompt) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 bg-white text-black shadow-lg p-4 rounded-lg flex items-center gap-3 border">
-      <span>Install WanderWise for a better experience?</span>
+    <div className="fixed bottom-6 right-6 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 text-black shadow-lg p-4 rounded-lg flex items-center gap-3 border">
+      <span className="text-gray-200">Install WanderWise for a better experience?</span>
       <Button onClick={handleInstall} className="bg-indigo-600 text-white">
         Install
       </Button>
-      <Button onClick={handleClose} variant="destructive" className="text-gray-500">
+      <Button onClick={handleClose} className="bg-gray-500 text-white">
         ✕
       </Button>
     </div>
