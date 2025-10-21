@@ -28,14 +28,10 @@ function Footer() {
 
           <ul className={`flex-1 min-w-[200px] space-y-1 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-400"}`}>
             <h3 className={`font-bold mb-2 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"}`}>About Us</h3>
-            <li>About Us</li>
-            <li>Investor Relations</li>
-            <li>Management</li>
             <li>Contact Us</li>
             <li>Terms of Services</li>
             <li>User Agreement</li>
             <li>Privacy</li>
-            <li>Careers</li>
             <li>YouTube Channel</li>
             <li>Technology@WanderWise</li>
             <li>Customer Support</li>
