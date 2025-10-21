@@ -17,12 +17,32 @@ import { useTheme } from "@/contexts/ThemeContext";
 function Navbar() {
   const currentTheme = useTheme();
   const location = useLocation();
+  const backgroundStyle =
+    currentTheme.theme === "light"
+      ? {
+        backgroundImage: `
+       radial-gradient(circle at center, #c4b5fd, transparent)
+     `,
+      }
+      : {
+        backgroundImage: `
+        radial-gradient(circle at 50% 50%, 
+          rgba(147, 51, 234, 0.2) 0%, 
+          rgba(147, 51, 234, 0.12) 25%, 
+          rgba(147, 51, 234, 0.05) 35%, 
+          transparent 50%
+        )
+      `,
+      backgroundSize: "100% 100%",
+      };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full flex flex-col md:flex-row items-center justify-between px-4 py-3 md:px-10 md:py-4 shadow-sm ${currentTheme.theme === "light"
-      ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
-      : "bg-gray-800 text-gray-200"
+    <nav className={`fixed top-0 left-0 w-full flex flex-col md:flex-row items-center justify-between px-4 py-3 md:px-10 md:py-4 shadow-sm 
+      ${currentTheme.theme === "light"
+        ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
+        : "bg-gray-800 text-gray-200"
       } z-50`}
+      style={backgroundStyle}
     >
       <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto mb-2 md:mb-0">
         <NavLink
@@ -135,10 +155,10 @@ function Navbar() {
 
         <HoverCard>
           <HoverCardTrigger asChild>
-            <div className="flex items-center border-2 border-indigo-400 text-indigo-400 rounded-lg px-2 py-1 text-xs font-medium">
+            <div className="flex items-center border-2 border-indigo-500 text-indigo-500 rounded-lg px-2 py-1 text-xs font-medium">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-indigo-400 mr-1 sm:translate-0.5"
+                className="w-4 h-4 text-indigo-500 mr-1 sm:translate-0.5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >

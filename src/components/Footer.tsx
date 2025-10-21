@@ -2,24 +2,30 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 function Footer() {
   const currentTheme = useTheme();
+  const backgroundStyle =
+    currentTheme.theme === "light"
+      ? {
+        background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #6366f1 100%)",
+      }
+      : {
+        background: "#0f172a",
+        backgroundImage: `
+        linear-gradient(to right, rgba(148,163,184,0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148,163,184,0.2) 1px, transparent 1px)
+      `,
+        backgroundSize: "40px 40px",
+      };
   return (
     <div
-      className={`min-w-screen ${currentTheme.theme === "light"
-        ? "bg-gradient-to-r from-white to-gray-200"
-        : "bg-gradient-to-r from-gray-800 to-gray-700"
-        }`}
+      className={`inset-0 z-0 min-h-screen`}
+      style={backgroundStyle}
     >
       <div className="px-4 sm:px-8 md:px-16 lg:px-32 xl:px-40">
-          <hr className="pt-5" />
+        <hr className="pt-5" />
         <div className="flex flex-wrap justify-evenly gap-10 pt-5 pb-5">
           <ul className={`flex-1 min-w-[200px] space-y-1 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-400"}`}>
             <h3 className={`font-bold mb-2 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"}`}>Our Products</h3>
-            <li>Domestic Hotels</li>
-            <li>International Hotels</li>
-            <li>Domestic Flights</li>
-            <li>International Flights</li>
-            <li>Multi-City Flights</li>
-            <li>Train Booking</li>
+            <li>Wander Coins</li>
             <li>Gift Cards</li>
             <li>Trip Money</li>
             <li>Advertising Solutions</li>
@@ -32,19 +38,15 @@ function Footer() {
             <li>Terms of Services</li>
             <li>User Agreement</li>
             <li>Privacy</li>
-            <li>YouTube Channel</li>
-            <li>Technology@WanderWise</li>
-            <li>Customer Support</li>
-            <li>Facebook Page</li>
-            <li>Twitter Handle</li>
             <li>Report Security Issues</li>
           </ul>
 
           <ul className={`flex-1 min-w-[200px] space-y-1 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-400"}`}>
             <h3 className={`font-bold mb-2 ${currentTheme.theme === "light" ? "text-gray-800" : "text-gray-300"}`}>Travel Essentials</h3>
             <li>PNR Status</li>
-            <li>Offers</li>
+            <li>WanderWise Offers</li>
             <li>Airline Routes</li>
+            <li>Pickup Schedule</li>
             <li>Train Running Status</li>
           </ul>
 
@@ -55,8 +57,6 @@ function Footer() {
             <li>My Bookings</li>
             <li>Cancellation</li>
             <li>My Account</li>
-            <li>Wallet</li>
-            <li>Advertise with Us</li>
           </ul>
         </div>
         <hr />

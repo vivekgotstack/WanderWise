@@ -3,15 +3,27 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Booking() {
   const currentTheme = useTheme();
-  
+  const backgroundStyle =
+    currentTheme.theme === "light"
+      ? {
+        background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #6366f1 100%)",
+      }
+      : {
+        background: "#0f172a",
+        backgroundImage: `
+      radial-gradient(circle, rgba(139,92,246,0.6) 1px, transparent 1px),
+      radial-gradient(circle, rgba(59,130,246,0.4) 1px, transparent 1px),
+      radial-gradient(circle, rgba(236,72,153,0.5) 1px, transparent 1px)
+    `,
+        backgroundSize: "20px 20px, 40px 40px, 60px 60px",
+        backgroundPosition: "0 0, 10px 10px, 30px 30px",
+  };
   return (
     <div
-      className={`flex flex-col md:flex-row min-h-screen w-full 
+      className={`inset-0 z-0 relative flex flex-col md:flex-row min-h-screen w-full 
         pt-[250px] sm:pt-[200px] md:pt-[100px] lg:pt-[100px] 
-        overflow-x-hidden ${currentTheme.theme === "light"
-          ? "bg-gradient-to-r from-white to-gray-200"
-          : "bg-gradient-to-r from-gray-800 to-gray-700"
-        }`}
+        overflow-x-hidden`}
+      style={backgroundStyle}
     >
       <div className="w-full md:w-1/2 flex justify-center items-center p-4 md:p-8">
         <PrefetchedImage
