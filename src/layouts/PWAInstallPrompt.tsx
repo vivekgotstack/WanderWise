@@ -1,15 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
+}
+
 const PWAInstallPrompt = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
 
   useEffect(() => {
-    const handler = (e: any) => {
+    const handler = (e: Event) => {
       e.preventDefault();
       if (window.matchMedia("(display-mode: standalone)").matches) return;
-      setDeferredPrompt(e);
+      setDeferredPrompt(e as BeforeInstallPromptEvent);
       setShowPrompt(true);
     };
 
@@ -37,8 +42,8 @@ const PWAInstallPrompt = () => {
   if (!showPrompt) return null;
 
   return (
-    <div className="z-100 fixed bottom-6 right-6 bg-gradient-to-r from-violet-500 via-violet-400 to-gray-300 text-black shadow-lg p-4 rounded-lg flex items-center gap-3 border">
-      <span className="text-gray-200">Install WanderWise for a better experience?</span>
+    <div className="z-100 fixed bottom-6 right-6 bg-gradient-to-r from-violet-400 via-violet-400 to-gray-300 text-black shadow-lg p-4 rounded-lg flex items-center gap-3 border">
+      <span className="bg-gradient-to-tr from-gray-800 to-black bg-clip-text text-transparent">Install WanderWise for a better experience?</span>
       <Button onClick={handleInstall} className="bg-violet-600 text-white">
         Install
       </Button>

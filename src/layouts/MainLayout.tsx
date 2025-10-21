@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Suspense, useEffect } from "react";
 import { useImagePrefetch } from "@/hooks/useImagePrefetch";
 import SkeletonCard from "@/components/ui/Skeletons/SkeletonCard";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -28,10 +30,12 @@ function MainLayout() {
     <ThemeProvider>
       <ScrollToTop />
       <Navbar />
+      <ScrollProgress />
       <Suspense fallback={<SkeletonCard />}>
         <Outlet />
       </Suspense>
       <Footer />
+      <ScrollToTopButton />
     </ThemeProvider>
   );
 }

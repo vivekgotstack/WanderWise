@@ -19,11 +19,17 @@ function Navbar() {
   const location = useLocation();
   const backgroundStyle =
     currentTheme.theme === "light"
-      ? {
+      ?{
         backgroundImage: `
-       radial-gradient(circle at center, #c4b5fd, transparent)
-     `,
+          radial-gradient(circle at center, rgba(196, 181, 253, 0.3), rgba(255, 255, 255, 0.1))
+        `,
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        borderRadius: '12px',
       }
+      
       : {
         backgroundImage: `
         radial-gradient(circle at 50% 50%, 
@@ -54,7 +60,7 @@ function Navbar() {
           <img
             src={currentTheme.theme === "light" ? "/logo.png" : "/logo1.png"}
             alt="WanderWise"
-            className="h-10 sm:h-12 md:h-14 w-auto"
+            className="h-12 sm:h-14 md:h-16 w-auto"
           />
         </NavLink>
         <button
