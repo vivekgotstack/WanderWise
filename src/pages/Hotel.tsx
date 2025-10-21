@@ -1,3 +1,4 @@
+import PrefetchedImage from "@/components/PrefetchedImage";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Hotel() {
@@ -13,7 +14,7 @@ export default function Hotel() {
         }`}
     >
       <div className="w-full md:w-1/2 flex justify-center items-center p-8">
-        <img
+        <PrefetchedImage
           src="/svg/pagessvg/hotelpage.svg"
           alt="Hotel Booking"
           className="w-full max-w-md md:max-w-full h-auto object-contain"
