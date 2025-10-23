@@ -100,7 +100,7 @@ function Navbar() {
           { to: "/hotel", icon: "/svg/hotel.svg", label: "Hotels" },
           { to: "/trains", icon: "/svg/train.svg", label: "Trains" },
           { to: "/cabs", icon: "/svg/cab.svg", label: "Cabs" },
-          { to: "/bus", icon: "/svg/bus.svg", label: "Bus" },
+          { to: "/bus", icon: "/svg/bus.svg", label: "Buses" },
           { to: "/holidays", icon: "/svg/holiday.svg", label: "Holidays" },
         ].map((item) => (
           <NavLink
