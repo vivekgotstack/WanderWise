@@ -183,7 +183,7 @@ function Footer() {
                   <path d="M3 7.007A4.007 4.007 0 0 1 7.007 3h41.986A4.007 4.007 0 0 1 53 7.007v41.986A4.007 4.007 0 0 1 48.993 53H7.007A4.007 4.007 0 0 1 3 48.993zM37.28 51V31.842h6.486l.971-7.466H37.28v-4.767c0-2.162.605-3.635 3.732-3.635L45 15.972V9.294C44.31 9.204 41.943 9 39.189 9c-5.75 0-9.686 3.48-9.686 9.87v5.506H23v7.466h6.503V51z" />
                 </svg>
               </a>
-              <a href="https://x.com/vivekgotstack" className="text-gray-400 hover:text-black">
+              <a href="https://x.com/meowsingh" className="text-gray-400 hover:text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="32" viewBox="0 0 448 512" fill="currentColor">
                   <path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm297.1 84L257.3 234.6L379.4 396h-95.6L209 298.1L123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5l78.2-89.5zm-37.8 251.6L153.4 142.9h-28.3l171.8 224.7h26.3z" />
                 </svg>
