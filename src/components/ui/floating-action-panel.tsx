@@ -295,7 +295,7 @@ export default function LogoutPanel({ onLogout }: { onLogout: () => void }) {
             Logout
           </FloatingActionPanelTrigger>
 
-          <FloatingActionPanelContent className={`p-3 -translate-x-22 translate-y-5 sm:-translate-x-20 sm:translate-y-5 md:-translate-x-30 md:translate-y-10 ${currentTheme.theme === "light" ? "bg-zinc-100" : "bg-indigo-950"}`}>
+          <FloatingActionPanelContent className={`p-3 -translate-x-22 translate-y-5 sm:-translate-x-20 sm:translate-y-5 md:-translate-x-30 md:translate-y-10 ${currentTheme.theme === "light" ? "bg-gradient-to-b from-violet-300 to-white" : "bg-gradient-to-b from-indigo-900 to-indigo-950"}`}>
             <div className={`text-sm ${currentTheme.theme === "light" ? "text-zinc-900" : "text-zinc-300"} px-2 pb-2`}>
               Are you sure you want to logout?
             </div>
@@ -311,7 +311,7 @@ export default function LogoutPanel({ onLogout }: { onLogout: () => void }) {
                 Continue
               </FloatingActionPanelButton>
 
-              <FloatingActionPanelButton onClick={ctx.closePanel} className="hover:bg-gray-200 font-bold text-gray-700">
+              <FloatingActionPanelButton onClick={ctx.closePanel} className="hover:bg-gray-200 font-bold text-gray-400">
                 Cancel
               </FloatingActionPanelButton>
             </div>

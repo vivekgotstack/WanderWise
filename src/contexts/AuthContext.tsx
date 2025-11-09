@@ -106,7 +106,7 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
       return true;
   
     } catch (error: any) {
-      toast.error(error?.message || "Login failed");
+      toast.error("Login failed, Please signup first!");
       return false;
   
     } finally {
