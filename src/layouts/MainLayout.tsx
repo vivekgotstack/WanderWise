@@ -7,7 +7,6 @@ import { useImagePrefetch } from "@/hooks/useImagePrefetch";
 import SkeletonCard from "@/components/ui/Skeletons/SkeletonCard";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
-import { Toaster } from "sonner";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
