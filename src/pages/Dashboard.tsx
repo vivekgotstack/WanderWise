@@ -5,15 +5,18 @@ import OpenSource from "@/components/ui/open-source";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { useNavigate } from "react-router-dom";
+import { Globe } from "@/components/ui/globe";
+import { AuroraText } from "@/components/ui/aurora-text";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   return (
-    <div className={cn("relative flex flex-col items-center justify-center overflow-hidden bg-black pt-40 md:pt-60")}>
+    <div className={cn("relative flex flex-col items-center justify-center overflow-hidden bg-black min-h-screen pt-40 md:pt-60")}>
       <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black via-zinc-900/50 to-black" />
 
       <motion.div
-        className="absolute w-[500px] h-[500px] md:w-[800px] md:h-[800px] lg:w-[1000px] lg:h-[1000px] rounded-full bg-gradient-to-r from-indigo-500/60 to-indigo-500/20 blur-3xl"
+        className="absolute rounded-full bg-gradient-to-r from-indigo-500/60 to-indigo-500/20 blur-3xl
+        w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] md:w-[650px] md:h-[650px] lg:w-[900px] lg:h-[900px]"
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.3, 0.2, 0.3],
@@ -27,7 +30,7 @@ export default function Dashboard() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
           <SparklesText className="text-white text-4xl sm:text-5xl md:text-6xl">
             WanderWise
@@ -70,20 +73,14 @@ export default function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 3.5 }}
         >
-          <div className="w-full aspect-[16/9] bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-4xl overflow-hidden border border-zinc-800 ">
+          <div className="w-full overflow-hidden aspect-[16/9] min-h-[260px] sm:min-h-[300px] md:min-h-[380px] bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-4xl border-2 border-indigo-800 relative">
             <motion.div
               className="absolute inset-0 bg-gradient-to-br rounded-4xl from-violet-400/10 to-indigo-500/50"
-              animate={{
-                opacity: [0.5, 0.3, 0.5],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+              animate={{ opacity: [0.5, 0.3, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             />
 
-            <div className="w-full overflow-hidden bg-transparent border-2 shadow-2xl shadow-black rounded-4xl py-2 sm:py-3">
+            <div className="w-full bg-transparent border-2 shadow-2xl shadow-black rounded-4xl py-2 sm:py-3">
               <div className="flex whitespace-nowrap animate-wanderwise-infinite">
                 <div className="flex">
                   {Array(20).fill(0).map((_, i) => (
@@ -103,19 +100,31 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <OpenSource
-              repository="codehagen/prismui"
-              defaultStats={{
-                stars: 27,
-                contributors: [
-                  { login: "codehagen" },
-                  { login: "contributor2" }
-                ],
-              }}
-            />
+            <motion.div
+              className="lg:hidden flex justify-center translate-y-30 items-center text-sm sm:text-base font-semibold text-indigo-300 tracking-wide select-none"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: -10 }}
+              transition={{ duration: 0.8, delay: 3.8 }}
+            >
+              <AuroraText className="text-5xl font-extrabold -translate-y-20 z-50">Proudly OpenSource</AuroraText>
+              <Globe className="bottom-80 -translate-y-15" />
+            </motion.div>
+
+            <div className="hidden lg:block">
+              <OpenSource
+                repository="codehagen/prismui"
+                defaultStats={{
+                  stars: 27,
+                  contributors: [
+                    { login: "codehagen" },
+                    { login: "contributor2" }
+                  ],
+                }}
+              />
+            </div>
           </div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-transparent to-transparent" />
         </motion.div>
       </div>
     </div>
