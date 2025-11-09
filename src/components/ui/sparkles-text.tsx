@@ -1,4 +1,4 @@
-import { CSSProperties, ReactElement, useEffect, useState } from "react"
+import { type CSSProperties, type ReactElement, useEffect, useState } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
