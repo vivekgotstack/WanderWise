@@ -53,19 +53,21 @@ let notifications = [
         color: "#F39C12",
     },
     {
-        name: "Train has arrived at the platform",
+        name: "Train departing shortly",
         description: "WanderWise",
         time: "2m ago",
-        icon: "🚉",
+        icon: "🚆",
         color: "#3498DB",
-    },
+      },
+      
     {
-        name: "Flight has landed",
+        name: "Flight gate assigned",
         description: "WanderWise",
         time: "Just now",
-        icon: "🛬",
+        icon: "✈️",
         color: "#0ABDE3",
-    },
+      },
+      
     {
         name: "Payment confirmed",
         description: "WanderWise",

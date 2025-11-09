@@ -78,34 +78,37 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
     try {
       setLoading(true);
       const result = await createUserWithEmailAndPassword(auth, email, password);
-
+  
       await setDoc(doc(firestore, "users", result.user.uid), {
         name,
         email,
         provider: "email",
         createdAt: serverTimestamp(),
       });
-
+  
       toast.success("Account created");
       return true;
+  
     } catch (error: any) {
-      toast.error(error.message || "Signup failed");
+      toast.error(error?.message || "Signup failed");
       return false;
+  
     } finally {
       setLoading(false);
     }
   };
-
+  
   const loginUser = async (email: string, password: string) => {
     try {
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
-
       toast.success("Login successful");
       return true;
+  
     } catch (error: any) {
-      toast.error(error.message || "Login failed");
+      toast.error(error?.message || "Login failed");
       return false;
+  
     } finally {
       setLoading(false);
     }

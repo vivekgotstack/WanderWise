@@ -78,8 +78,8 @@ export function Login() {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full">
-                    Login
+                  <Button type="submit" className="w-full" disabled={firebase.loading}>
+                    {firebase.loading ? "Logging in..." : "Login"}
                   </Button>
                 </div>
               </form>
