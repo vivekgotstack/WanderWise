@@ -91,3 +91,17 @@ hr {
   width: max-content;     
   animation: scroll 25s linear infinite;
 }
+
+@keyframes wanderwise-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-wanderwise-infinite {
+  display: inline-flex;
+  animation: wanderwise-infinite 100s linear infinite;
+}

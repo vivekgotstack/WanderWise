@@ -3,23 +3,16 @@ import {
   HoverCardTrigger,
   HoverCardContent,
 } from "@radix-ui/react-hover-card";
-import { useLocation, NavLink } from "react-router-dom";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "./ui/card";
-import { Button } from "./ui/button";
+import { NavLink } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
+import LogoutPanel from "./ui/floating-action-panel";
+import { useAuth } from "@/contexts/AuthContext";
 
 function Navbar() {
   const currentTheme = useTheme();
-  const location = useLocation();
   const backgroundStyle =
     currentTheme.theme === "light"
-      ?{
+      ? {
         backgroundImage: `
           radial-gradient(circle at center, rgba(196, 181, 253, 0.3), rgba(255, 255, 255, 0.1))
         `,
@@ -29,17 +22,20 @@ function Navbar() {
         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
         borderRadius: '12px',
       }
-      
+
       : {
+        background: "rgba(11,12,50,0.75)",
+        backdropFilter: "blur(6px)",
         backgroundImage: `
-        radial-gradient(circle at 50% 50%, 
-          rgba(147, 51, 234, 0.2) 0%, 
-          rgba(147, 51, 234, 0.12) 25%, 
-          rgba(147, 51, 234, 0.05) 35%, 
-          transparent 50%
-        )
-      `,
-      backgroundSize: "100% 100%",
+          repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.03) 0px,
+            rgba(255,255,255,0.03) 2px,
+            transparent 2px,
+            transparent 6px
+          )
+        `,
+        backgroundSize: "20px 20px",
       };
 
   return (
@@ -107,7 +103,7 @@ function Navbar() {
             key={item.to}
             to={item.to}
             className={({ isActive }) =>
-              `nav-item flex flex-col items-center text-center ${isActive || (item.to === "/flights" && location.pathname === "/") ? "active" : ""
+              `nav-item flex flex-col items-center text-center ${isActive ? "active" : ""
               }`
             }
           >
@@ -158,47 +154,8 @@ function Navbar() {
             </HoverCardContent>
           </HoverCard>
         </NavLink>
+        <LogoutPanel onLogout={useAuth().logoutHandler} />
 
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <div className="flex items-center border-2 border-indigo-500 text-indigo-500 rounded-lg px-2 py-1 text-xs font-medium">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-indigo-500 mr-1 sm:translate-0.5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
-              <NavLink to="login">
-                <span className="whitespace-nowrap sm:block md:hidden lg:block">Login/Signup</span>
-              </NavLink>
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent>
-            <Card className="p-5 bg-gray-200 w-64 mt-3 rounded-lg shadow-md shadow-gray-600 cursor-default">
-              <CardHeader>
-                <CardTitle>Hey Traveller</CardTitle>
-                <CardDescription className="text-black">
-                  Get exclusive deals & manage your trips
-                </CardDescription>
-              </CardHeader>
-
-              <CardContent>
-                <NavLink to="/login">
-                  <div className="flex justify-center">
-                    <Button
-                      className="cursor-pointer bg-indigo-500 text-white w-full p-2"
-                      onClick={() => { }}
-                    >
-                      Login/Signup
-                    </Button>
-                  </div>
-                </NavLink>
-              </CardContent>
-            </Card>
-          </HoverCardContent>
-        </HoverCard>
       </div >
     </nav >
   );

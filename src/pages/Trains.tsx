@@ -9,15 +9,19 @@ export default function Trains() {
         background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #6366f1 100%)",
       }
       : {
-        background: "#0f172a",
+        background: "#0b0c32",
         backgroundImage: `
-      radial-gradient(circle, rgba(139,92,246,0.6) 1px, transparent 1px),
-      radial-gradient(circle, rgba(59,130,246,0.4) 1px, transparent 1px),
-      radial-gradient(circle, rgba(236,72,153,0.5) 1px, transparent 1px)
-    `,
-        backgroundSize: "20px 20px, 40px 40px, 60px 60px",
-        backgroundPosition: "0 0, 10px 10px, 30px 30px",
-  };
+          radial-gradient(circle at 20% 30%, rgba(99,102,241,0.20), transparent 60%),
+          radial-gradient(circle at 80% 60%, rgba(79,70,229,0.15), transparent 60%),
+          repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 2px,
+          transparent 2px,
+          transparent 6px
+        )`,
+        backgroundSize: "cover, cover, 200px",
+      };
   return (
     <div
       className={`inset-0 z-0 relative flex flex-col md:flex-row min-h-screen w-full 

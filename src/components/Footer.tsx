@@ -8,12 +8,17 @@ function Footer() {
         background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #6366f1 100%)",
       }
       : {
-        background: "#0f172a",
+        background: "#090926",
         backgroundImage: `
-        linear-gradient(to right, rgba(148,163,184,0.2) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148,163,184,0.2) 1px, transparent 1px)
-      `,
-        backgroundSize: "40px 40px",
+          repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 2px,
+          transparent 2px,
+          transparent 6px
+          )
+        `,
+        backgroundSize: "20px 20px",
       };
   return (
     <div
