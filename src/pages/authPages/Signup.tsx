@@ -44,8 +44,8 @@ export function Signup() {
             <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
                 <div className="flex lg:hidden justify-center">
-                    <AuroraText className="text-black text-6xl font-extrabold">
-                        Welcome
+                    <AuroraText className="text-black text-6xl font-extrabold add-font-style">
+                        Welcome!
                     </AuroraText>
                 </div>
 
