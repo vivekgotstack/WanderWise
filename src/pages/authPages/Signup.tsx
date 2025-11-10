@@ -40,7 +40,7 @@ export function Signup() {
     };
 
     return (
-        <div className="min-h-screen w-full bg-background p-4 flex flex-col lg:flex-row justify-center items-center">
+        <div className="h-screen w-full bg-background p-4 flex flex-col lg:flex-row justify-center items-center">
             <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
                 <div className="flex lg:hidden justify-center">
