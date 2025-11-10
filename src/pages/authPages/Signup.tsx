@@ -6,6 +6,7 @@ import { Label } from "@radix-ui/react-label";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
+import { AuroraText } from "@/components/ui/aurora-text";
 
 export function Signup() {
     const navigate = useNavigate();
@@ -39,8 +40,14 @@ export function Signup() {
     };
 
     return (
-        <div className="min-h-screen w-full bg-background p-4 flex justify-center items-center">
+        <div className="min-h-screen w-full bg-background p-4 flex flex-col lg:flex-row justify-center items-center">
             <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+                <div className="flex lg:hidden justify-center">
+                    <AuroraText className="text-black text-6xl font-extrabold">
+                        Welcome
+                    </AuroraText>
+                </div>
 
                 <div className="w-full flex justify-center">
                     <Card className="w-full max-w-sm">

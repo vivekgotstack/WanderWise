@@ -33,9 +33,9 @@ export function Login() {
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-background p-4">
-      <div className="w-full max-w-5xl flex items-center gap-10">
+      <div className="w-full max-w-5xl flex flex-col items-center -translate-y-64 md:translate-0 md:flex-row md:gap-10">
 
-        <div className="w-full md:w-1/2 justify-center items-center hidden md:block">
+        <div className="w-full md:w-1/2 justify-center items-center block">
           <AnimatedListDemo />
         </div>
 
