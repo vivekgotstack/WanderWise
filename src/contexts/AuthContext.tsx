@@ -64,10 +64,10 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
         createdAt: serverTimestamp(),
       }, { merge: true });
 
-      toast.success("Google login successful");
+      toast.success("Google Sign-in successful");
       return true;
     } catch (error: any) {
-      toast.error(error.message || "Google login failed");
+      toast.error(getAuthErrorMessage(error.code));
       return false;
     } finally {
       setLoading(false);
@@ -86,11 +86,11 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
         createdAt: serverTimestamp(),
       });
   
-      toast.success("Account created");
+      toast.success("Account created successfully.");
       return true;
   
     } catch (error: any) {
-      toast.error(error?.message || "Signup failed");
+      toast.error(getAuthErrorMessage(error.code));
       return false;
   
     } finally {
@@ -106,7 +106,7 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
       return true;
   
     } catch (error: any) {
-      toast.error("Login failed, Please signup first!");
+      toast.error(getAuthErrorMessage(error.code));
       return false;
   
     } finally {
@@ -142,6 +142,62 @@ export function useAuth() {
     throw new Error("useAuth must be used inside FirebaseProvider");
   }
   return ctx;
+}
+
+function getAuthErrorMessage(code: string): string {
+  switch (code) {
+
+    // SIGNUP ERRORS
+    case "auth/email-already-in-use":
+      return "This email is already registered. Try logging in instead.";
+
+    case "auth/invalid-email":
+      return "Please enter a valid email address.";
+
+    case "auth/weak-password":
+      return "Your password must be at least 6 characters.";
+
+    case "auth/operation-not-allowed":
+      return "Email sign-up is not available right now.";
+
+    // LOGIN ERRORS
+    case "auth/user-not-found":
+      return "No account found with this email.";
+
+    case "auth/wrong-password":
+      return "Incorrect password. Try again.";
+
+    case "auth/invalid-credential":
+      return "Invalid email/password. Try Sign-up or Google Sign-in if once done before.";
+
+    case "auth/user-disabled":
+      return "This account has been disabled.";
+
+    // GOOGLE ERRORS
+    case "auth/popup-closed-by-user":
+      return "Google sign-in was cancelled.";
+
+    case "auth/cancelled-popup-request":
+      return "Another sign-in attempt is already in progress.";
+
+    case "auth/popup-blocked":
+      return "Your browser blocked the Google sign-in popup.";
+
+    case "auth/account-exists-with-different-credential":
+      return "This email is registered with a different login method.";
+
+    // NETWORK
+    case "auth/network-request-failed":
+      return "Network error. Check your connection.";
+
+    // RATE LIMIT
+    case "auth/too-many-requests":
+      return "Too many attempts. Please wait and try again.";
+
+    // DEFAULT (catch-all)
+    default:
+      return "Something went wrong. Please try again.";
+  }
 }
 
 export { auth };
