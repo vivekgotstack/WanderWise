@@ -33,6 +33,7 @@ It provides a smooth way to search, compare, and book hotels easily while offeri
 | **React.js**      | Core framework for the frontend    |
 | **Tailwind CSS**  | Styling and layout                 |
 | **Vite**          | Fast development environment       |
+| **Firebase**     | Authentication and Realtime Database |
 | **TypeScript** | Functionality and Type safety      |
 | **SVG Assets**    | Custom illustrations               |
 
