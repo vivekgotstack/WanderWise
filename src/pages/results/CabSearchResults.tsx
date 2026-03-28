@@ -29,7 +29,7 @@ export default function CabSearchResults() {
     const fetchCabs = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/cabs/estimate",
+          `${import.meta.env.VITE_API_BASE_URL}/cabs/estimate`,
           { params: { pickup, drop } }
         );
 

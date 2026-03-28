@@ -13,7 +13,7 @@ export default function FlightBooking() {
     const fetchBookings = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/bookings/user/101"
+          `${import.meta.env.VITE_API_BASE_URL}/bookings/user/101`
         );
         setBookings(res.data);
       } catch (e) {
@@ -43,9 +43,7 @@ export default function FlightBooking() {
         My Flight Bookings
       </h1>
 
-      {loading && (
-        <p className="text-gray-400">Loading bookings...</p>
-      )}
+      {loading && <p className="text-gray-400">Loading bookings...</p>}
 
       {!loading && bookings.length === 0 && (
         <p className="text-gray-400">No bookings yet</p>

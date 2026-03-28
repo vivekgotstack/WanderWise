@@ -44,7 +44,7 @@ export default function BusResults() {
     const fetchBuses = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/buses/search",
+          `${import.meta.env.VITE_API_BASE_URL}/buses/search`,
           {
             params: { source, destination, date },
           }

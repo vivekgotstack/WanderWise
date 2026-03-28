@@ -66,7 +66,7 @@ export default function TrainResults() {
     const fetchTrains = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/trains/search",
+        `${import.meta.env.VITE_API_BASE_URL}/trains/search`,
           {
             params: { source, destination, date },
           }
