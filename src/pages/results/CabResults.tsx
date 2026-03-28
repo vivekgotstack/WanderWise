@@ -46,7 +46,7 @@ export default function CabResults() {
         <div className="flex items-center gap-4 mb-6">
           <img
             src={imageMap[type]}
-            className="w-16 h-16 object-contain"
+            className="w-20 h-20 object-contain"
           />
 
           <div>

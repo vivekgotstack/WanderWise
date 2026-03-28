@@ -142,9 +142,8 @@ export default function TrainResults() {
       {/* HEADER */}
       <div className="w-full max-w-6xl mb-6">
         <h1
-          className={`text-xl sm:text-2xl md:text-3xl font-bold ${
-            isDark ? "text-gray-200" : "text-gray-800"
-          }`}
+          className={`text-xl sm:text-2xl md:text-3xl font-bold ${isDark ? "text-gray-200" : "text-gray-800"
+            }`}
         >
           Trains from {source} → {destination}
         </h1>
@@ -162,13 +161,23 @@ export default function TrainResults() {
       {!loading && trains.length === 0 && (
         <div className="mt-24 text-center max-w-md">
           <div className="text-5xl mb-4">🚆</div>
-          <h2 className="text-xl font-semibold">No trains found</h2>
+
+          <h2
+            className={`text-xl font-semibold ${isDark ? "text-gray-300" : "text-gray-700"
+              }`}
+          >
+            No trains found
+          </h2>
+
+          <p className="mt-2 text-gray-500 text-sm">
+            No trains available for this route.
+          </p>
 
           <button
             onClick={() => navigate("/trains")}
-            className="mt-6 px-6 py-2 bg-indigo-600 text-white rounded-lg"
+            className="mt-6 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
           >
-            Try Again
+            Try Another Search
           </button>
         </div>
       )}
@@ -181,11 +190,10 @@ export default function TrainResults() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className={`p-2 rounded-lg border ${
-                isDark
+              className={`p-2 rounded-lg border ${isDark
                   ? "bg-[#1a1c4b] text-white border-gray-600"
                   : "bg-white border-gray-300"
-              }`}
+                }`}
             >
               <option value="price">Price</option>
               <option value="departureTime">Departure</option>
@@ -194,11 +202,10 @@ export default function TrainResults() {
             <select
               value={direction}
               onChange={(e) => setDirection(e.target.value)}
-              className={`p-2 rounded-lg border ${
-                isDark
+              className={`p-2 rounded-lg border ${isDark
                   ? "bg-[#1a1c4b] text-white border-gray-600"
                   : "bg-white border-gray-300"
-              }`}
+                }`}
             >
               <option value="asc">Asc</option>
               <option value="desc">Desc</option>
@@ -213,14 +220,13 @@ export default function TrainResults() {
               return (
                 <div
                   key={train.id}
-                  className={`p-5 rounded-xl shadow-md hover:shadow-xl transition ${
-                    isDark
+                  className={`p-5 rounded-xl shadow-md hover:shadow-xl transition ${isDark
                       ? "bg-[#15173a] text-gray-200"
                       : "bg-gradient-to-br from-pink-50 via-white to-indigo-50 border border-indigo-100"
-                  }`}
+                    }`}
                 >
                   <div className="flex justify-between items-center flex-wrap gap-4">
-                    
+
                     {/* LEFT */}
                     <div className="flex items-center gap-3">
                       <img
