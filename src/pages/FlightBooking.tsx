@@ -11,7 +11,7 @@ export default function FlightBooking() {
 
   const API = `${import.meta.env.VITE_API_BASE_URL}`;
 
-  // 🔥 STATUS HANDLER (3 min simulation)
+  // 🔥 STATUS HANDLER
   const getStatus = (b: any) => {
     const created = new Date(b.createdAt).getTime();
     const now = Date.now();
@@ -20,7 +20,6 @@ export default function FlightBooking() {
 
     const diff = (now - created) / 1000;
 
-    // ⏱️ 3 minutes = 180 seconds
     if (!b.status || b.status === "PENDING") {
       return diff >= 180 ? "CONFIRMED" : "PENDING";
     }
@@ -32,7 +31,6 @@ export default function FlightBooking() {
       return cancelDiff >= 180 ? "CANCELLED" : "CANCELLING";
     }
 
-    // 🔁 normalize backend inconsistency
     if (b.status === "FAILED") return "CANCELLED";
 
     return b.status;
@@ -41,7 +39,7 @@ export default function FlightBooking() {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await axios.get(`${API}/bookings/user/101`);
+        const res = await axios.get(`${API}/api/bookings/user/101`);
         setBookings(res.data);
       } catch (e) {
         console.error(e);
@@ -53,7 +51,7 @@ export default function FlightBooking() {
     fetchBookings();
   }, []);
 
-  // 🔥 CANCEL HANDLER (no instant removal)
+  // 🔥 CANCEL (UNCHANGED LOGIC)
   const handleCancel = async (id: number) => {
     try {
       setBookings((prev) =>
@@ -62,13 +60,25 @@ export default function FlightBooking() {
             ? {
                 ...b,
                 status: "CANCELLING",
-                updatedAt: new Date().toISOString(), // track cancel start
+                updatedAt: new Date().toISOString(),
               }
             : b
         )
       );
 
-      await axios.post(`${API}/bookings/${id}/cancel`);
+      await axios.post(`${API}/api/bookings/${id}/cancel`);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // 🔥 DELETE (NEW — CLEAN, NO SIDE EFFECT)
+  const handleRemove = async (id: number) => {
+    try {
+      await axios.delete(`${API}/api/bookings/${id}`);
+
+      // instant UI removal
+      setBookings((prev) => prev.filter((b) => b.id !== id));
     } catch (e) {
       console.error(e);
     }
@@ -126,7 +136,7 @@ export default function FlightBooking() {
                   </p>
                 </div>
 
-                {/* STATUS BADGE */}
+                {/* STATUS */}
                 <span
                   className={`text-xs px-3 py-1 rounded-full font-semibold ${
                     status === "CONFIRMED"
@@ -172,6 +182,18 @@ export default function FlightBooking() {
                   )}
                 </div>
               </div>
+
+              {/* 🔥 REMOVE BUTTON (ONLY AFTER CANCELLED) */}
+              {status === "CANCELLED" && (
+                <div className="mt-4 flex justify-end">
+                  <button
+                    onClick={() => handleRemove(b.id)}
+                    className="px-4 py-2 text-sm bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition"
+                  >
+                    Remove Permanently
+                  </button>
+                </div>
+              )}
             </div>
           );
         })}
