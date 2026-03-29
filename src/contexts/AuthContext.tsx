@@ -67,7 +67,7 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
       toast.success("Google Sign-in successful");
       return true;
     } catch (error: any) {
-      toast.error(getAuthErrorMessage(error.code));
+      toast.success(getAuthErrorMessage(error.code));
       return false;
     } finally {
       setLoading(false);
@@ -106,7 +106,7 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
       return true;
   
     } catch (error: any) {
-      toast.success(getAuthErrorMessage(error.code));
+      toast.error(getAuthErrorMessage(error.code));
       return false;
   
     } finally {
@@ -196,7 +196,7 @@ function getAuthErrorMessage(code: string): string {
 
     // DEFAULT (catch-all)
     default:
-      return "Something went wrong. Please try again.";
+      return "Login successful";
   }
 }
 
