@@ -20,7 +20,6 @@ export default function FlightBooking() {
 
     const diff = (now - created) / 1000;
 
-    // ⏱️ 3 minutes = 180 seconds
     if (!b.status || b.status === "PENDING") {
       return diff >= 180 ? "CONFIRMED" : "PENDING";
     }
@@ -32,7 +31,6 @@ export default function FlightBooking() {
       return cancelDiff >= 180 ? "CANCELLED" : "CANCELLING";
     }
 
-    // 🔁 normalize backend inconsistency
     if (b.status === "FAILED") return "CANCELLED";
 
     return b.status;
@@ -53,7 +51,7 @@ export default function FlightBooking() {
     fetchBookings();
   }, []);
 
-  // 🔥 CANCEL HANDLER (no instant removal)
+  // 🔥 CANCEL
   const handleCancel = async (id: number) => {
     try {
       setBookings((prev) =>
@@ -62,13 +60,25 @@ export default function FlightBooking() {
             ? {
                 ...b,
                 status: "CANCELLING",
-                updatedAt: new Date().toISOString(), // track cancel start
+                updatedAt: new Date().toISOString(),
               }
             : b
         )
       );
 
-      await axios.post(`${API}/bookings/${id}/cancel`);
+      await axios.post(`${API}/api/bookings/${id}/cancel`);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // 🔥 DELETE (NEW)
+  const handleDelete = async (id: number) => {
+    try {
+      await axios.delete(`${API}/api/bookings/${id}`);
+
+      // instant UI removal
+      setBookings((prev) => prev.filter((b) => b.id !== id));
     } catch (e) {
       console.error(e);
     }
@@ -126,7 +136,7 @@ export default function FlightBooking() {
                   </p>
                 </div>
 
-                {/* STATUS BADGE */}
+                {/* STATUS */}
                 <span
                   className={`text-xs px-3 py-1 rounded-full font-semibold ${
                     status === "CONFIRMED"
@@ -168,6 +178,16 @@ export default function FlightBooking() {
                       className="mt-2 px-4 py-1 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
                     >
                       Cancel
+                    </button>
+                  )}
+
+                  {/* 🔥 REMOVE BUTTON (ONLY WHEN CANCELLED) */}
+                  {status === "CANCELLED" && (
+                    <button
+                      onClick={() => handleDelete(b.id)}
+                      className="mt-2 px-4 py-1 text-sm bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition"
+                    >
+                      Remove
                     </button>
                   )}
                 </div>

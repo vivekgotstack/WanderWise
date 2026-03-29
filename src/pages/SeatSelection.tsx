@@ -82,12 +82,14 @@ export default function SeatSelection() {
 
     return (
         <div
-            className="min-h-screen px-6 pt-[120px] pb-10 flex flex-col items-center"
+            className="min-h-screen text-center px-4 sm:px-6 md:px-12 lg:px-20 
+            pt-80 sm:pt-60 md:pt-36 lg:pt-40 pb-20 flex flex-col items-center"
             style={backgroundStyle}
         >
             <h1
-                className={`text-3xl md:text-4xl font-bold mb-6 ${isDark ? "text-gray-200" : "text-gray-800"
-                    }`}
+                className={`text-3xl md:text-4xl font-bold mb-6 ${
+                    isDark ? "text-gray-200" : "text-gray-800"
+                }`}
             >
                 Select Seats
             </h1>
@@ -96,8 +98,9 @@ export default function SeatSelection() {
             <div className="flex flex-col items-center">
 
                 <div
-                    className={`mb-4 text-sm ${isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
+                    className={`mb-4 text-sm ${
+                        isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
                 >
                     Front
                 </div>
@@ -143,8 +146,9 @@ export default function SeatSelection() {
 
                 {/* Legend */}
                 <div
-                    className={`flex gap-6 mt-6 text-sm ${isDark ? "text-gray-400" : "text-gray-600"
-                        }`}
+                    className={`flex gap-6 mt-6 text-sm ${
+                        isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
                 >
                     <span>⬜ Available</span>
                     <span>🟦 Selected</span>
