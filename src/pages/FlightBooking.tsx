@@ -32,13 +32,12 @@ export default function FlightBooking() {
 
   return (
     <div
-      className="min-h-screen px-6 pt-[120px] pb-10"
+      className="min-h-screen px-4 sm:px-6 md:px-12 lg:px-20 pt-[120px] pb-10 flex flex-col items-center"
       style={{ background: bg }}
     >
       <h1
-        className={`text-3xl md:text-4xl font-bold mb-8 ${
-          isDark ? "text-gray-200" : "text-gray-800"
-        }`}
+        className={`text-3xl md:text-4xl font-bold mb-8 ${isDark ? "text-gray-200" : "text-gray-800"
+          }`}
       >
         My Flight Bookings
       </h1>
@@ -49,24 +48,22 @@ export default function FlightBooking() {
         <p className="text-gray-400">No bookings yet</p>
       )}
 
-      <div className="space-y-6">
+      <div className="space-y-6 w-full max-w-4xl">
         {bookings.map((b) => (
           <div
             key={b.id}
-            className={`p-6 rounded-2xl shadow-md ${
-              isDark ? "bg-[#15173a] text-white" : "bg-white text-black"
-            }`}
+            className={`p-6 rounded-2xl shadow-md ${isDark ? "bg-[#15173a] text-white" : "bg-white text-black"
+              }`}
           >
             <div className="flex justify-between items-center">
               <h2 className="text-lg font-semibold">
                 Booking #{b.id}
               </h2>
               <span
-                className={`text-xs px-2 py-1 rounded ${
-                  b.status === "CONFIRMED"
+                className={`text-xs px-2 py-1 rounded ${b.status === "CONFIRMED"
                     ? "bg-green-500 text-white"
                     : "bg-yellow-500 text-white"
-                }`}
+                  }`}
               >
                 {b.status}
               </span>

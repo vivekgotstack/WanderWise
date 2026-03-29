@@ -132,9 +132,9 @@ export function Signup() {
                         <div className="relative w-full pt-[56.25%]">
                             <iframe
                                 className="absolute inset-0 w-full h-full"
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&controls=0&loop=1&playlist=dQw4w9WgXcQ&modestbranding=1&playsinline=1&disablekb=1&fs=0"
                                 title="Demo video"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allow="autoplay; encrypted-media"
                                 allowFullScreen
                             ></iframe>
                         </div>
