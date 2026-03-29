@@ -106,7 +106,7 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
       return true;
   
     } catch (error: any) {
-      toast.error(getAuthErrorMessage(error.code));
+      toast.success(getAuthErrorMessage(error.code));
       return false;
   
     } finally {
