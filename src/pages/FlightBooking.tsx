@@ -11,7 +11,6 @@ export default function FlightBooking() {
 
   const API = `${import.meta.env.VITE_API_BASE_URL}`;
 
-  // 🔥 STATUS HANDLER
   const getStatus = (b: any) => {
     const created = new Date(b.createdAt).getTime();
     const now = Date.now();
@@ -39,7 +38,7 @@ export default function FlightBooking() {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await axios.get(`${API}/api/bookings/user/101`);
+        const res = await axios.get(`${API}/bookings/user/101`);
         setBookings(res.data);
       } catch (e) {
         console.error(e);
@@ -51,7 +50,6 @@ export default function FlightBooking() {
     fetchBookings();
   }, []);
 
-  // 🔥 CANCEL (UNCHANGED LOGIC)
   const handleCancel = async (id: number) => {
     try {
       setBookings((prev) =>
@@ -66,18 +64,15 @@ export default function FlightBooking() {
         )
       );
 
-      await axios.post(`${API}/api/bookings/${id}/cancel`);
+      await axios.post(`${API}/bookings/${id}/cancel`);
     } catch (e) {
       console.error(e);
     }
   };
 
-  // 🔥 DELETE (NEW — CLEAN, NO SIDE EFFECT)
-  const handleRemove = async (id: number) => {
+  const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`${API}/api/bookings/${id}`);
-
-      // instant UI removal
+      await axios.delete(`${API}/bookings/${id}`);
       setBookings((prev) => prev.filter((b) => b.id !== id));
     } catch (e) {
       console.error(e);
@@ -94,7 +89,6 @@ export default function FlightBooking() {
       pt-80 sm:pt-60 md:pt-36 lg:pt-40 pb-20 flex flex-col items-center"
       style={{ background: bg }}
     >
-      {/* HEADER */}
       <h1
         className={`text-2xl md:text-3xl font-bold mb-8 ${
           isDark ? "text-gray-200" : "text-gray-800"
@@ -103,17 +97,14 @@ export default function FlightBooking() {
         My Flight Bookings
       </h1>
 
-      {/* LOADING */}
       {loading && (
         <p className="text-gray-400 mt-10">Loading bookings...</p>
       )}
 
-      {/* EMPTY */}
       {!loading && bookings.length === 0 && (
         <p className="text-gray-400 mt-10">No bookings yet</p>
       )}
 
-      {/* BOOKINGS */}
       <div className="space-y-6 w-full max-w-4xl">
         {bookings.map((b) => {
           const status = getStatus(b);
@@ -127,7 +118,6 @@ export default function FlightBooking() {
                   : "bg-gradient-to-br from-pink-50 via-white to-indigo-50 border border-indigo-100"
               }`}
             >
-              {/* TOP */}
               <div className="flex justify-between items-center flex-wrap gap-4">
                 <div>
                   <h2 className="font-semibold">Booking #{b.id}</h2>
@@ -136,7 +126,6 @@ export default function FlightBooking() {
                   </p>
                 </div>
 
-                {/* STATUS */}
                 <span
                   className={`text-xs px-3 py-1 rounded-full font-semibold ${
                     status === "CONFIRMED"
@@ -152,7 +141,6 @@ export default function FlightBooking() {
                 </span>
               </div>
 
-              {/* MIDDLE */}
               <div className="mt-4 flex justify-between items-center flex-wrap gap-4">
                 <div>
                   <p className="text-sm text-gray-400">
@@ -171,7 +159,6 @@ export default function FlightBooking() {
                     ₹{b.totalPrice}
                   </p>
 
-                  {/* CANCEL BUTTON */}
                   {(status === "PENDING" || status === "CONFIRMED") && (
                     <button
                       onClick={() => handleCancel(b.id)}
@@ -180,20 +167,17 @@ export default function FlightBooking() {
                       Cancel
                     </button>
                   )}
+
+                  {status === "CANCELLED" && (
+                    <button
+                      onClick={() => handleDelete(b.id)}
+                      className="mt-2 ml-2 px-4 py-1 text-sm bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition"
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               </div>
-
-              {/* 🔥 REMOVE BUTTON (ONLY AFTER CANCELLED) */}
-              {status === "CANCELLED" && (
-                <div className="mt-4 flex justify-end">
-                  <button
-                    onClick={() => handleRemove(b.id)}
-                    className="px-4 py-2 text-sm bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition"
-                  >
-                    Remove Permanently
-                  </button>
-                </div>
-              )}
             </div>
           );
         })}
