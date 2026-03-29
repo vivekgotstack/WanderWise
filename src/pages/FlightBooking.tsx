@@ -11,15 +11,29 @@ export default function FlightBooking() {
 
   const API = `${import.meta.env.VITE_API_BASE_URL}`;
 
-  // 🔥 STATUS HANDLER
+  // 🔥 STATUS HANDLER (3 min simulation)
   const getStatus = (b: any) => {
     const created = new Date(b.createdAt).getTime();
     const now = Date.now();
+
+    if (!created || created > now) return "PENDING";
+
     const diff = (now - created) / 1000;
 
+    // ⏱️ 3 minutes = 180 seconds
     if (!b.status || b.status === "PENDING") {
-      return diff > 600 ? "CONFIRMED" : "PENDING"; // 10 min
+      return diff >= 180 ? "CONFIRMED" : "PENDING";
     }
+
+    if (b.status === "CANCELLING") {
+      const cancelTime = new Date(b.updatedAt || b.createdAt).getTime();
+      const cancelDiff = (now - cancelTime) / 1000;
+
+      return cancelDiff >= 180 ? "CANCELLED" : "CANCELLING";
+    }
+
+    // 🔁 normalize backend inconsistency
+    if (b.status === "FAILED") return "CANCELLED";
 
     return b.status;
   };
@@ -39,22 +53,22 @@ export default function FlightBooking() {
     fetchBookings();
   }, []);
 
-  // 🔥 CANCEL HANDLER
+  // 🔥 CANCEL HANDLER (no instant removal)
   const handleCancel = async (id: number) => {
     try {
-      // immediate UI update → CANCELLING
       setBookings((prev) =>
         prev.map((b) =>
-          b.id === id ? { ...b, status: "CANCELLING" } : b
+          b.id === id
+            ? {
+                ...b,
+                status: "CANCELLING",
+                updatedAt: new Date().toISOString(), // track cancel start
+              }
+            : b
         )
       );
 
       await axios.post(`${API}/bookings/${id}/cancel`);
-
-      // simulate delay removal (~10s instead of 10min for UX)
-      setTimeout(() => {
-        setBookings((prev) => prev.filter((b) => b.id !== id));
-      }, 10000);
     } catch (e) {
       console.error(e);
     }
@@ -106,9 +120,7 @@ export default function FlightBooking() {
               {/* TOP */}
               <div className="flex justify-between items-center flex-wrap gap-4">
                 <div>
-                  <h2 className="font-semibold">
-                    Booking #{b.id}
-                  </h2>
+                  <h2 className="font-semibold">Booking #{b.id}</h2>
                   <p className="text-sm text-gray-400">
                     {b.flight.source} → {b.flight.destination}
                   </p>
@@ -121,6 +133,8 @@ export default function FlightBooking() {
                       ? "bg-green-500 text-white"
                       : status === "CANCELLING"
                       ? "bg-red-500 text-white"
+                      : status === "CANCELLED"
+                      ? "bg-gray-500 text-white"
                       : "bg-yellow-500 text-white"
                   }`}
                 >
@@ -148,7 +162,7 @@ export default function FlightBooking() {
                   </p>
 
                   {/* CANCEL BUTTON */}
-                  {status !== "CANCELLING" && (
+                  {(status === "PENDING" || status === "CONFIRMED") && (
                     <button
                       onClick={() => handleCancel(b.id)}
                       className="mt-2 px-4 py-1 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
