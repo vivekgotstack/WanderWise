@@ -1,6 +1,7 @@
 import PrefetchedImage from "@/components/PrefetchedImage";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
+import { recordActivity } from "@/lib/activity";
 
 export default function Holidays() {
   const currentTheme = useTheme();
@@ -75,7 +76,14 @@ export default function Holidays() {
         </p>
 
         <button
-          onClick={() => navigate("/holidays/results")}
+          onClick={() => {
+            recordActivity({
+              type: "search",
+              module: "holidays",
+              summary: "Explored holiday packages",
+            });
+            navigate("/holidays/results");
+          }}
           className={`px-6 py-3 rounded-xl font-semibold transition ${
             isDark
               ? "bg-indigo-500 text-white hover:bg-indigo-600"
@@ -84,6 +92,19 @@ export default function Holidays() {
         >
           Explore Packages →
         </button>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {["Beach Escape", "Mountain Break", "Weekend Getaway", "International"].map((themeItem) => (
+            <span
+              key={themeItem}
+              className={`px-3 py-1.5 text-xs rounded-full ${
+                isDark ? "bg-[#1d2050] text-gray-200" : "bg-indigo-50 text-indigo-700"
+              }`}
+            >
+              {themeItem}
+            </span>
+          ))}
+        </div>
 
         <p className="mt-4 text-sm text-gray-500">
           Handpicked experiences. Best deals.

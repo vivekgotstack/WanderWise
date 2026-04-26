@@ -2,6 +2,7 @@ import PrefetchedImage from "@/components/PrefetchedImage";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { recordActivity } from "@/lib/activity";
 
 export default function Trains() {
   const currentTheme = useTheme();
@@ -46,6 +47,12 @@ export default function Trains() {
       alert("Fill all fields");
       return;
     }
+
+    recordActivity({
+      type: "search",
+      module: "trains",
+      summary: `Searched trains ${source.trim().toUpperCase()} to ${destination.trim().toUpperCase()}`,
+    });
 
     navigate(
       `/trains/results?source=${source.trim().toUpperCase()}&destination=${destination
@@ -132,6 +139,34 @@ export default function Trains() {
           >
             Search Trains →
           </button>
+        </div>
+
+        <div className="mt-5 w-full max-w-sm">
+          <p className={`text-xs mb-2 ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+            Popular routes
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { from: "DEL", to: "MUM" },
+              { from: "BLR", to: "CHN" },
+              { from: "KOL", to: "DEL" },
+            ].map((route) => (
+              <button
+                key={`${route.from}-${route.to}`}
+                onClick={() => {
+                  setSource(route.from);
+                  setDestination(route.to);
+                }}
+                className={`px-3 py-1.5 text-xs rounded-full transition ${
+                  isDark
+                    ? "bg-[#1d2050] text-gray-200 hover:bg-[#252a6a]"
+                    : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                }`}
+              >
+                {route.from} → {route.to}
+              </button>
+            ))}
+          </div>
         </div>
 
         <p className="mt-4 text-sm text-gray-500">

@@ -39,14 +39,15 @@ function Navbar() {
       };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full flex flex-col md:flex-row items-center justify-between px-4 py-3 md:px-10 md:py-4 shadow-sm 
+    <>
+      <nav className={`fixed top-0 left-0 w-full flex flex-col xl:flex-row items-center xl:items-center justify-between px-4 py-3 md:px-6 xl:px-10 md:py-4 shadow-sm 
       ${currentTheme.theme === "light"
-        ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
-        : "bg-gray-800 text-gray-200"
-      } z-50`}
-      style={backgroundStyle}
-    >
-      <div className="flex flex-shrink-0 items-center justify-between w-full md:w-auto mb-2 md:mb-0">
+          ? "bg-gradient-to-r from-white to-gray-200 text-gray-600"
+          : "bg-gray-800 text-gray-200"
+        } z-50`}
+        style={backgroundStyle}
+      >
+      <div className="flex flex-shrink-0 items-center justify-between w-full xl:w-auto mb-2 xl:mb-0">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -90,7 +91,7 @@ function Navbar() {
           )}
         </button>
       </div>
-      <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-evenly items-center gap-4 md:gap-6 w-full md:w-auto mb-3 md:mb-0">
+      <div className="flex flex-wrap xl:flex-nowrap justify-center xl:justify-evenly items-center gap-3 md:gap-4 xl:gap-6 w-full xl:w-auto mb-3 xl:mb-0">
         {[
           { to: "/flights", icon: "/svg/plane.svg", label: "Flights" },
           { to: "/hotel", icon: "/svg/hotel.svg", label: "Hotels" },
@@ -112,11 +113,39 @@ function Navbar() {
           </NavLink>
         ))}
       </div>
-      <div className="flex items-center justify-center gap-4 md:gap-6 mt-3 md:mt-0">
+      <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2 sm:gap-3 xl:gap-5 mt-2 xl:mt-0 w-full xl:w-auto">
+        <NavLink
+          to="/insights"
+          className={({ isActive }) =>
+            `text-xs sm:text-sm font-medium px-2.5 sm:px-3 py-2 rounded-lg transition ${
+              isActive
+                ? "bg-indigo-600 text-white"
+                : currentTheme.theme === "light"
+                ? "text-gray-700 hover:bg-indigo-100"
+                : "text-gray-200 hover:bg-[#1d2050]"
+            }`
+          }
+        >
+          Insights
+        </NavLink>
+        <NavLink
+          to="/saved-trips"
+          className={({ isActive }) =>
+            `text-xs sm:text-sm font-medium px-2.5 sm:px-3 py-2 rounded-lg transition ${
+              isActive
+                ? "bg-pink-600 text-white"
+                : currentTheme.theme === "light"
+                ? "text-gray-700 hover:bg-pink-100"
+                : "text-gray-200 hover:bg-[#1d2050]"
+            }`
+          }
+        >
+          Saved
+        </NavLink>
         <NavLink
           to="/booking"
           className={({ isActive }) =>
-            `flex items-center text-center flex-shrink-0 sm:ml-12 ${isActive ? "border-2 p-2 border-indigo-500 rounded-md" : ""}`
+            `flex items-center text-center flex-shrink-0 sm:ml-2 xl:ml-10 ${isActive ? "border-2 p-2 border-indigo-500 rounded-md" : ""}`
           }
         >
           <HoverCard>
@@ -157,7 +186,15 @@ function Navbar() {
         <LogoutPanel onLogout={useAuth().logoutHandler} />
 
       </div >
-    </nav >
+      </nav >
+      <div
+        className={`hidden md:block xl:hidden h-28 ${
+          currentTheme.theme === "light"
+            ? "bg-gradient-to-r from-white to-gray-100"
+            : "bg-[#0b0c32]"
+        }`}
+      />
+    </>
   );
 }
 

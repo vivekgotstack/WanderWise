@@ -2,6 +2,7 @@ import PrefetchedImage from "@/components/PrefetchedImage";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { recordActivity } from "@/lib/activity";
 
 export default function Hotel() {
   const currentTheme = useTheme();
@@ -45,6 +46,12 @@ export default function Hotel() {
       alert("Enter city");
       return;
     }
+
+    recordActivity({
+      type: "search",
+      module: "hotels",
+      summary: `Searched hotels in ${city.trim().toUpperCase()}`,
+    });
 
     navigate(`/hotel/results?city=${city.toUpperCase()}&date=${date}`);
   };
@@ -119,6 +126,27 @@ export default function Hotel() {
           >
             Search Hotels →
           </button>
+        </div>
+
+        <div className="mt-5 w-full max-w-sm">
+          <p className={`text-xs mb-2 ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+            Quick picks
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {["DELHI", "GOA", "MANALI", "MUMBAI"].map((item) => (
+              <button
+                key={item}
+                onClick={() => setCity(item)}
+                className={`px-3 py-1.5 text-xs rounded-full transition ${
+                  isDark
+                    ? "bg-[#1d2050] text-gray-200 hover:bg-[#252a6a]"
+                    : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
 
         <p className="mt-4 text-sm text-gray-500">

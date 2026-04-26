@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { searchFlights } from "@/api/flightApi";
 import { useTheme } from "@/contexts/ThemeContext";
+import { isFlightSaved, toggleSavedFlight } from "@/lib/savedTrips";
+import { recordActivity } from "@/lib/activity";
 
 export default function FlightResults() {
   const [searchParams] = useSearchParams();
@@ -15,6 +17,7 @@ export default function FlightResults() {
   const [totalPages, setTotalPages] = useState(0);
   const [sortBy, setSortBy] = useState("basePrice");
   const [direction, setDirection] = useState("asc");
+  const [savedIds, setSavedIds] = useState<Set<number>>(new Set());
 
   const source = searchParams.get("source") || "";
   const destination = searchParams.get("destination") || "";
@@ -44,6 +47,13 @@ export default function FlightResults() {
     fetchFlights();
   }, [source, destination, date, page, sortBy, direction]);
 
+  useEffect(() => {
+    const next = flights
+      .filter((flight) => isFlightSaved(flight.id))
+      .map((flight) => flight.id);
+    setSavedIds(new Set(next));
+  }, [flights]);
+
   const isDark = theme !== "light";
 
   const formatDuration = (dep: string, arr: string) => {
@@ -54,6 +64,36 @@ export default function FlightResults() {
     const h = Math.floor(mins / 60);
     const m = mins % 60;
     return `${h}h ${m}m`;
+  };
+
+  const handleToggleSave = (flight: any) => {
+    const saved = toggleSavedFlight({
+      id: flight.id,
+      airline: flight.airline,
+      flightNumber: flight.flightNumber,
+      source: flight.source,
+      destination: flight.destination,
+      departureTime: flight.departureTime,
+      arrivalTime: flight.arrivalTime,
+      basePrice: flight.basePrice,
+      availableSeats: flight.availableSeats,
+    });
+
+    setSavedIds((prev) => {
+      const next = new Set(prev);
+      if (saved) next.add(flight.id);
+      else next.delete(flight.id);
+      return next;
+    });
+
+    recordActivity({
+      type: "search",
+      module: "flights",
+      summary: saved
+        ? `Saved flight ${flight.source} to ${flight.destination}`
+        : `Removed saved flight ${flight.source} to ${flight.destination}`,
+      amount: flight.basePrice,
+    });
   };
 
   return (
@@ -146,6 +186,7 @@ export default function FlightResults() {
             {flights.map((flight) => {
               const dep = new Date(flight.departureTime);
               const arr = new Date(flight.arrivalTime);
+              const isSaved = savedIds.has(flight.id);
 
               return (
                 <div
@@ -204,14 +245,28 @@ export default function FlightResults() {
                       </p>
                     </div>
 
-                    <button
-                      onClick={() =>
-                        navigate(`/flights/${flight.id}/seats`)
-                      }
-                      className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-                    >
-                      Select Seats
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => handleToggleSave(flight)}
+                        className={`px-4 py-2 rounded-lg border transition ${
+                          isSaved
+                            ? "bg-pink-600 border-pink-600 text-white hover:bg-pink-700"
+                            : isDark
+                            ? "border-gray-600 text-gray-200 hover:bg-[#1a1c4b]"
+                            : "border-gray-300 text-gray-700 hover:bg-indigo-50"
+                        }`}
+                      >
+                        {isSaved ? "Saved ♥" : "Save"}
+                      </button>
+                      <button
+                        onClick={() =>
+                          navigate(`/flights/${flight.id}/seats`)
+                        }
+                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+                      >
+                        Select Seats
+                      </button>
+                    </div>
                   </div>
                 </div>
               );

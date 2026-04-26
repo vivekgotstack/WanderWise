@@ -25,6 +25,9 @@ import HolidayResults from "@/pages/results/HolidayResults";
 import HotelResults from "@/pages/results/HotelResults";
 import CabResults from "@/pages/results/CabResults";
 import CabSearchResults from "@/pages/results/CabSearchResults";
+import Insights from "@/pages/Insights";
+import SavedTrips from "@/pages/SavedTrips";
+import Payment from "@/pages/Payment";
 
 const router = createBrowserRouter([
 
@@ -39,6 +42,7 @@ const router = createBrowserRouter([
             { path: "flights", element: <Flight /> },
             { path: "flights/results", element: <FlightResults /> },
             { path: "flights/:id/seats", element: <SeatSelection /> },
+            { path: "payment", element: <Payment /> },
             { path: "flight-booking", element: <FlightBooking /> },
             { path: "hotel", element: <Hotel /> },
             { path: "hotel/results", element: <HotelResults /> },
@@ -52,6 +56,8 @@ const router = createBrowserRouter([
             { path: "holidays", element: <Holidays /> },
             { path: "holidays/results", element: <HolidayResults /> },
             { path: "booking", element: <Booking /> },
+            { path: "insights", element: <Insights /> },
+            { path: "saved-trips", element: <SavedTrips /> },
             { path: "booking-success/:id", element: <BookingSuccess /> },
             { path: "*", element: <ErrorPage /> },
         ]

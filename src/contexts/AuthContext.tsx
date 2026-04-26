@@ -8,6 +8,7 @@ import {
 import {
   getAuth,
   GoogleAuthProvider,
+  type User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -32,6 +33,8 @@ interface FirebaseContextProps {
   loginUser: (email: string, password: string) => Promise<boolean>;
   googleSignup: () => Promise<boolean>;
   logoutHandler: () => Promise<void>;
+  user: User | null;
+  appUserId: number | null;
   loading: boolean;
   authenticated: boolean;
   initializing: boolean;
@@ -43,10 +46,14 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [appUserId, setAppUserId] = useState<number | null>(null);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
+      setUser(user);
       setAuthenticated(!!user);
+      setAppUserId(user ? getStableAppUserId(user.uid) : null);
       setInitializing(false);
     });
     return unsub;
@@ -126,6 +133,8 @@ export function FirebaseProvider({ children }: { children: ReactNode }) {
         loginUser,
         googleSignup,
         logoutHandler,
+        user,
+        appUserId,
         loading,
         authenticated,
         initializing,
@@ -201,3 +210,13 @@ function getAuthErrorMessage(code: string): string {
 }
 
 export { auth };
+
+function getStableAppUserId(firebaseUid: string): number {
+  let hash = 0;
+  for (let i = 0; i < firebaseUid.length; i++) {
+    hash = (hash * 31 + firebaseUid.charCodeAt(i)) | 0;
+  }
+
+  // Backend expects a positive numeric identifier.
+  return Math.abs(hash) + 1;
+}

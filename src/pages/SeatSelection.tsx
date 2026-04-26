@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getSeats } from "@/api/flightApi";
-import { createBooking, confirmBooking } from "@/api/bookingApi";
+import { createBooking } from "@/api/bookingApi";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function SeatSelection() {
     const navigate = useNavigate();
     const { id } = useParams();
     const flightId = Number(id);
+    const { appUserId } = useAuth();
 
     const { theme } = useTheme();
     const isDark = theme !== "light";
@@ -39,6 +41,11 @@ export default function SeatSelection() {
     }, [flightId]);
 
     const handleBooking = async () => {
+        if (!appUserId) {
+            alert("Session not ready. Please login again.");
+            return;
+        }
+
         if (selectedSeats.length === 0) {
             alert("Select at least 1 seat");
             return;
@@ -46,19 +53,22 @@ export default function SeatSelection() {
 
         try {
             setLoading(true);
-
             const booking = await createBooking({
                 flightId,
-                userId: 101,
+                userId: appUserId,
                 seatIds: selectedSeats,
             });
 
-            await confirmBooking(booking.id);
-
-            navigate(`/booking-success/${booking.id}`);
-        } catch (e) {
-            throw new Error("Booking failed");
-        } finally {
+            navigate("/payment", {
+                state: {
+                    bookingId: booking.id,
+                    seatIds: selectedSeats,
+                    estimatedAmount: booking.totalPrice,
+                },
+            });
+        } catch (error) {
+            console.error(error);
+            alert("Unable to create booking. Please try again.");
             setLoading(false);
         }
     };
@@ -163,7 +173,7 @@ export default function SeatSelection() {
                     disabled={loading}
                     className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
                 >
-                    {loading ? "Processing..." : "Confirm Booking"}
+                    {loading ? "Redirecting..." : "Continue to Payment"}
                 </button>
             </div>
         </div>

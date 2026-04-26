@@ -2,6 +2,7 @@ import PrefetchedImage from "@/components/PrefetchedImage";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { recordActivity } from "@/lib/activity";
 
 export default function Cabs() {
   const currentTheme = useTheme();
@@ -45,6 +46,12 @@ export default function Cabs() {
       alert("Fill all fields");
       return;
     }
+
+    recordActivity({
+      type: "search",
+      module: "cabs",
+      summary: `Checked cab fare ${pickup.trim()} to ${drop.trim()}`,
+    });
 
     navigate(
       `/cabs/search?pickup=${pickup.trim()}&drop=${drop.trim()}`
@@ -126,6 +133,34 @@ export default function Cabs() {
           >
             Check Fare →
           </button>
+        </div>
+
+        <div className="mt-5 w-full max-w-sm">
+          <p className={`text-xs mb-2 ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+            Suggested rides
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { from: "Airport", to: "City Center" },
+              { from: "Railway Station", to: "Hotel District" },
+              { from: "Tech Park", to: "Airport" },
+            ].map((route) => (
+              <button
+                key={`${route.from}-${route.to}`}
+                onClick={() => {
+                  setPickup(route.from);
+                  setDrop(route.to);
+                }}
+                className={`px-3 py-1.5 text-xs rounded-full transition ${
+                  isDark
+                    ? "bg-[#1d2050] text-gray-200 hover:bg-[#252a6a]"
+                    : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                }`}
+              >
+                {route.from} → {route.to}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* SUBTEXT */}

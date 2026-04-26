@@ -2,6 +2,7 @@ import PrefetchedImage from "@/components/PrefetchedImage";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { recordActivity } from "@/lib/activity";
 
 export default function Flight() {
   const currentTheme = useTheme();
@@ -46,6 +47,12 @@ export default function Flight() {
       alert("Fill all fields");
       return;
     }
+
+    recordActivity({
+      type: "search",
+      module: "flights",
+      summary: `Searched ${source.trim().toUpperCase()} to ${destination.trim().toUpperCase()}`,
+    });
 
     navigate(
       `/flights/results?source=${source.trim().toUpperCase()}&destination=${destination
